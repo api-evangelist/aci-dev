@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.aci.dev/v1/linked-accounts/oauth2?app_name=GMAIL&linked_account_owner_id=user_42&after_oauth2_link_redirect_url=https%3A%2F%2Fmyapp.example%2Fcallback",
+    "headers": {
+      "X-API-KEY": "aci_pk_..."
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "url": "https://accounts.google.com/o/oauth2/v2/auth?client_id=...&redirect_uri=https%3A%2F%2Fapi.aci.dev%2Fv1%2Flinked-accounts%2Foauth2%2Fcallback&scope=...&state=...&response_type=code"
+    }
+  }
+}

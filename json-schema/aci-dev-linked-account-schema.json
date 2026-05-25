@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LinkedAccountPublic",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "project_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Project Id"
+    },
+    "app_name": {
+      "type": "string",
+      "title": "App Name"
+    },
+    "linked_account_owner_id": {
+      "type": "string",
+      "title": "Linked Account Owner Id"
+    },
+    "security_scheme": {
+      "$ref": "#/components/schemas/SecurityScheme"
+    },
+    "enabled": {
+      "type": "boolean",
+      "title": "Enabled"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "project_id",
+    "app_name",
+    "linked_account_owner_id",
+    "security_scheme",
+    "enabled",
+    "created_at",
+    "updated_at"
+  ]
+}

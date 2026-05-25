@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AppConfigurationPublic",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "project_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Project Id"
+    },
+    "app_name": {
+      "type": "string",
+      "title": "App Name"
+    },
+    "security_scheme": {
+      "$ref": "#/components/schemas/SecurityScheme"
+    },
+    "security_scheme_overrides": {
+      "type": "object",
+      "title": "Security Scheme Overrides"
+    },
+    "enabled": {
+      "type": "boolean",
+      "title": "Enabled"
+    },
+    "all_functions_enabled": {
+      "type": "boolean",
+      "title": "All Functions Enabled"
+    },
+    "enabled_functions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "title": "Enabled Functions"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "project_id",
+    "app_name",
+    "security_scheme",
+    "security_scheme_overrides",
+    "enabled",
+    "all_functions_enabled",
+    "enabled_functions",
+    "created_at",
+    "updated_at"
+  ]
+}

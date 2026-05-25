@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FunctionExecute",
+  "properties": {
+    "function_input": {
+      "type": "object",
+      "title": "Function Input",
+      "description": "The input parameters for the function."
+    },
+    "linked_account_owner_id": {
+      "type": "string",
+      "maxLength": 255,
+      "title": "Linked Account Owner Id",
+      "description": "The owner id of the linked account. This is the id of the linked account owner in the linked account provider."
+    }
+  },
+  "type": "object",
+  "required": [
+    "linked_account_owner_id"
+  ]
+}

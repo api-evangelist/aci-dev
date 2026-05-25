@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.aci.dev/v1/functions/GMAIL__SEND_EMAIL/execute",
+    "headers": {
+      "X-API-KEY": "aci_pk_...",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "function_input": {
+        "to": "kin@apievangelist.com",
+        "subject": "Hello from ACI.dev",
+        "body": "Testing the unified tool-calling platform."
+      },
+      "linked_account_owner_id": "user_42"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "success": true,
+      "data": {
+        "id": "1985d4f0e0e2c1a3",
+        "threadId": "1985d4f0e0e2c1a3",
+        "labelIds": ["SENT"]
+      }
+    }
+  }
+}

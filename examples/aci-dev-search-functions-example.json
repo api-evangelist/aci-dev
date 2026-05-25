@@ -1,0 +1,46 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.aci.dev/v1/functions/search?intent=send%20an%20email&limit=5&format=openai",
+    "headers": {
+      "X-API-KEY": "aci_pk_..."
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "type": "function",
+        "function": {
+          "name": "GMAIL__SEND_EMAIL",
+          "description": "Send an email through the authenticated Gmail account.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "to": { "type": "string", "description": "Recipient email address." },
+              "subject": { "type": "string" },
+              "body": { "type": "string" }
+            },
+            "required": ["to", "subject", "body"]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "OUTLOOK__SEND_MAIL",
+          "description": "Send mail via Microsoft Graph on behalf of the linked Outlook account.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "to": { "type": "array", "items": { "type": "string" } },
+              "subject": { "type": "string" },
+              "body": { "type": "string" }
+            },
+            "required": ["to", "subject", "body"]
+          }
+        }
+      }
+    ]
+  }
+}

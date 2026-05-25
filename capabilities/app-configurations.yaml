@@ -1,0 +1,176 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ACI.dev API — App Configurations
+  description: Manage App Configurations — per-project policy declaring which Apps are enabled, which security scheme to use (OAuth2, API key, no-auth), and which functions are permitted.
+  tags:
+  - ACI.dev
+  - App Configurations
+  - Governance
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    ACI_API_KEY: ACI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: app-configurations
+    baseUri: https://api.aci.dev
+    description: ACI.dev App Configurations consumed surface.
+    resources:
+    - name: v1-app-configurations
+      path: /v1/app-configurations
+      operations:
+      - name: createappconfiguration
+        method: POST
+        description: Create App Configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+      - name: listappconfigurations
+        method: GET
+        description: List App Configurations.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+        inputParameters:
+        - name: app_names
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+    - name: v1-app-configuration
+      path: /v1/app-configurations/{app_name}
+      operations:
+      - name: getappconfiguration
+        method: GET
+        description: Get App Configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: app_name
+          in: path
+          type: string
+          required: true
+      - name: updateappconfiguration
+        method: PATCH
+        description: Update App Configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: app_name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          required: true
+      - name: deleteappconfiguration
+        method: DELETE
+        description: Delete App Configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: app_name
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-API-KEY
+      value: '{{env.ACI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: mcp
+    namespace: app-configurations-mcp
+    port: 9092
+    transport: http
+    description: MCP adapter for ACI.dev App Configurations.
+    tools:
+    - name: aci-create-app-configuration
+      description: Create an App Configuration in the current project.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: app-configurations.createappconfiguration
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aci-list-app-configurations
+      description: List App Configurations in the current project.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-configurations.listappconfigurations
+      with:
+        app_names: tools.app_names
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: array
+        mapping: $.
+    - name: aci-get-app-configuration
+      description: Get a specific App Configuration.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-configurations.getappconfiguration
+      with:
+        app_name: tools.app_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aci-update-app-configuration
+      description: Update an App Configuration.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: app-configurations.updateappconfiguration
+      with:
+        app_name: tools.app_name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aci-delete-app-configuration
+      description: Delete an App Configuration.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: app-configurations.deleteappconfiguration
+      with:
+        app_name: tools.app_name
+      outputParameters:
+      - type: object
+        mapping: $.

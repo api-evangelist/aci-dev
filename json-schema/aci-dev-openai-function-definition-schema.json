@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAIFunctionDefinition",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "function"
+      ],
+      "const": "function",
+      "title": "Type",
+      "default": "function"
+    },
+    "function": {
+      "$ref": "#/components/schemas/OpenAIFunction"
+    }
+  },
+  "type": "object",
+  "required": [
+    "function"
+  ]
+}

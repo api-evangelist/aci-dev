@@ -1,0 +1,77 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "aci": "https://api.aci.dev/v1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "App": {
+      "@id": "aci:App",
+      "@context": {
+        "name": { "@id": "aci:App/name", "@type": "xsd:string" },
+        "display_name": { "@id": "aci:App/displayName", "@type": "xsd:string" },
+        "provider": { "@id": "aci:App/provider", "@type": "xsd:string" },
+        "version": { "@id": "aci:App/version", "@type": "xsd:string" },
+        "description": { "@id": "aci:App/description", "@type": "xsd:string" },
+        "logo": { "@id": "aci:App/logo", "@type": "xsd:anyURI" },
+        "categories": { "@id": "aci:App/categories", "@container": "@list" },
+        "visibility": { "@id": "aci:App/visibility", "@type": "xsd:string" },
+        "active": { "@id": "aci:App/active", "@type": "xsd:boolean" },
+        "security_schemes": { "@id": "aci:App/securitySchemes", "@container": "@list" },
+        "functions": { "@id": "aci:App/functions", "@container": "@list" }
+      }
+    },
+
+    "Function": {
+      "@id": "aci:Function",
+      "@context": {
+        "name": { "@id": "aci:Function/name", "@type": "xsd:string" },
+        "description": { "@id": "aci:Function/description", "@type": "xsd:string" },
+        "tags": { "@id": "aci:Function/tags", "@container": "@list" },
+        "app_name": { "@id": "aci:Function/appName", "@type": "xsd:string" },
+        "parameters": { "@id": "aci:Function/parameters", "@type": "@json" }
+      }
+    },
+
+    "AppConfiguration": {
+      "@id": "aci:AppConfiguration",
+      "@context": {
+        "app_name": { "@id": "aci:AppConfiguration/appName", "@type": "xsd:string" },
+        "security_scheme": { "@id": "aci:AppConfiguration/securityScheme", "@type": "xsd:string" },
+        "security_scheme_overrides": { "@id": "aci:AppConfiguration/securitySchemeOverrides", "@type": "@json" },
+        "enabled": { "@id": "aci:AppConfiguration/enabled", "@type": "xsd:boolean" },
+        "all_functions_enabled": { "@id": "aci:AppConfiguration/allFunctionsEnabled", "@type": "xsd:boolean" },
+        "enabled_functions": { "@id": "aci:AppConfiguration/enabledFunctions", "@container": "@list" }
+      }
+    },
+
+    "LinkedAccount": {
+      "@id": "aci:LinkedAccount",
+      "@context": {
+        "id": { "@id": "aci:LinkedAccount/id", "@type": "xsd:string" },
+        "project_id": { "@id": "aci:LinkedAccount/projectId", "@type": "xsd:string" },
+        "app_name": { "@id": "aci:LinkedAccount/appName", "@type": "xsd:string" },
+        "linked_account_owner_id": { "@id": "aci:LinkedAccount/linkedAccountOwnerId", "@type": "xsd:string" },
+        "security_scheme": { "@id": "aci:LinkedAccount/securityScheme", "@type": "xsd:string" },
+        "enabled": { "@id": "aci:LinkedAccount/enabled", "@type": "xsd:boolean" },
+        "created_at": { "@id": "aci:LinkedAccount/createdAt", "@type": "xsd:dateTime" },
+        "updated_at": { "@id": "aci:LinkedAccount/updatedAt", "@type": "xsd:dateTime" },
+        "last_used_at": { "@id": "aci:LinkedAccount/lastUsedAt", "@type": "xsd:dateTime" }
+      }
+    },
+
+    "FunctionExecution": {
+      "@id": "aci:FunctionExecution",
+      "@context": {
+        "function_name": { "@id": "aci:FunctionExecution/functionName", "@type": "xsd:string" },
+        "function_input": { "@id": "aci:FunctionExecution/functionInput", "@type": "@json" },
+        "linked_account_owner_id": { "@id": "aci:FunctionExecution/linkedAccountOwnerId", "@type": "xsd:string" },
+        "success": { "@id": "aci:FunctionExecution/success", "@type": "xsd:boolean" },
+        "data": { "@id": "aci:FunctionExecution/data", "@type": "@json" },
+        "error": { "@id": "aci:FunctionExecution/error", "@type": "xsd:string" }
+      }
+    }
+  }
+}

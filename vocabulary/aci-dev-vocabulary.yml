@@ -1,0 +1,68 @@
+name: ACI.dev Vocabulary
+description: Domain vocabulary for ACI.dev (Aipolabs Agent-Computer Interface) — the open-source tool-calling platform and unified MCP server. Captures concepts, tools, integrations, and governance terms used in the ACI ecosystem.
+version: '0.1'
+modified: '2026-05-25'
+sources:
+- https://aci.dev/docs/llms.txt
+- https://aci.dev/docs/api-reference/overview.md
+- https://github.com/aipotheosis-labs/aci
+- https://github.com/aipotheosis-labs/aci-mcp
+- https://github.com/aipotheosis-labs/gate22
+
+dimensions:
+
+  concepts:
+  - name: Agent
+    description: Logical actor within a project — represents an AI agent that uses ACI tools via an API key.
+  - name: App
+    description: External service integration registered in the ACI catalog (e.g., Slack, Gmail, Zendesk). One of 600+ pre-built integrations.
+  - name: App Configuration
+    description: Project-scoped policy choosing which Apps are enabled, which security scheme to use, and which functions are permitted.
+  - name: Function
+    description: A callable tool operation exposed by an App. Returned in OpenAI- or Anthropic-compatible function-definition format.
+  - name: Linked Account
+    description: End-user connection to a configured App — typically an OAuth2 grant or API key tied to a linked_account_owner_id.
+  - name: Project
+    description: Top-level resource container in the ACI dashboard — groups Apps, Configurations, Agents, and Linked Accounts.
+  - name: Unified MCP Server
+    description: Single MCP endpoint exposing two meta-tools — ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION — that dynamically discover and execute the entire ACI catalog.
+  - name: Apps MCP Server
+    description: Mode of aci-mcp that exposes the functions of a specific set of Apps as MCP tools.
+  - name: VibeOps
+    description: Term coined by Aipolabs describing operational tooling for agentic workflows. The ACI repo describes itself as "the birthplace of VibeOps".
+
+  tools:
+  - name: aci
+    description: Backend server, frontend portal, Python SDK, and TypeScript SDK comprising the open-source ACI.dev platform.
+  - name: aci-mcp
+    description: Python-based unified and apps MCP server for ACI.dev managed functions.
+  - name: aci-mcp-node
+    description: Node/TypeScript port of aci-mcp.
+  - name: aci-python-sdk
+    description: Official Python SDK for the Aipolabs API.
+  - name: aci-typescript-sdk
+    description: Official TypeScript SDK for the Aipolabs API.
+  - name: aci-agents
+    description: Example agent implementations built on ACI.dev.
+  - name: gate22
+    description: Open-source MCP gateway and control plane for teams to govern which tools agents can use, what they can do, and how it is audited — across IDEs like Cursor.
+
+  integrations:
+  - name: OpenAI Function Calling
+    description: ACI returns function definitions in OpenAI-compatible JSON Schema for use with the OpenAI Chat Completions tool-use API.
+  - name: Anthropic Tool Use
+    description: ACI returns function definitions in Anthropic-compatible JSON Schema for use with the Claude Messages tools parameter.
+  - name: Model Context Protocol
+    description: ACI exposes its catalog through MCP servers compatible with Cursor, Claude Desktop, Claude Code, and other MCP clients.
+  - name: OAuth2
+    description: First-class OAuth2 link flow for end-user credentials, including white-label OAuth2 for production.
+
+  governance:
+  - name: Natural Language Permissions
+    description: Instruction filters that guardrail API executions based on natural language rules.
+  - name: Function-Level Allow Lists
+    description: Per-AppConfiguration list of explicitly enabled functions (gate22 extends this concept).
+  - name: Per-Call Audit Logging
+    description: Gate22 tracks who executed which tool and when, for governed agent rollouts.
+  - name: Credential Modes
+    description: Gate22 supports organization-shared credentials and per-user credential variants.

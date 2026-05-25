@@ -1,0 +1,75 @@
+extends: spectral:oas
+formats:
+  - oas3_1
+rules:
+  aci-info-contact:
+    description: API info object must declare a contact for Aipolabs.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  aci-info-license:
+    description: API info must declare the Apache 2.0 license used by ACI.dev.
+    severity: warn
+    given: $.info
+    then:
+      field: license
+      function: truthy
+
+  aci-server-required:
+    description: At least one server URL must be defined so consumers can call the production API.
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+
+  aci-path-versioned:
+    description: All paths must be versioned under /v1 (matching ACI.dev's only stable release line).
+    severity: error
+    given: $.paths
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^/v1/'
+
+  aci-operation-id-prefixed:
+    description: operationId must be prefixed with one of the known resource tags (apps, functions, app-configurations, linked-accounts).
+    severity: warn
+    given: $.paths[*][get,post,patch,delete]
+    then:
+      field: operationId
+      function: pattern
+      functionOptions:
+        match: '^(apps|functions|app-configurations|linked-accounts)-'
+
+  aci-summary-title-case:
+    description: Operation summaries must use Title Case.
+    severity: warn
+    given: $.paths[*][get,post,patch,delete]
+    then:
+      field: summary
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*( ([A-Za-z0-9-]+))*$'
+
+  aci-apikey-header:
+    description: APIKeyHeader security scheme must use the X-API-KEY header as documented by ACI.dev.
+    severity: error
+    given: $.components.securitySchemes.APIKeyHeader
+    then:
+    - field: type
+      function: pattern
+      functionOptions:
+        match: '^apiKey$'
+    - field: in
+      function: pattern
+      functionOptions:
+        match: '^header$'
+    - field: name
+      function: pattern
+      functionOptions:
+        match: '^X-API-KEY$'
