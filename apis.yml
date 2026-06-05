@@ -1,257 +1,255 @@
 aid: aci-dev
 url: https://raw.githubusercontent.com/api-evangelist/aci-dev/refs/heads/main/apis.yml
 apis:
-- aid: aci-dev:aci-dev-apps-api
-  name: ACI.dev Apps API
-  tags:
-  - Apps
-  - Catalog
-  - Tool Calling
-  humanURL: https://aci.dev/docs/core-concepts/app.md
-  properties:
-  - url: https://aci.dev/docs/core-concepts/app.md
-    type: Documentation
-  - url: https://aci.dev/docs/api-reference/apps/search-apps.md
-    type: Documentation
-  - url: https://aci.dev/docs/api-reference/apps/get-app-details.md
-    type: Documentation
-  - url: openapi/aci-dev-openapi.yml
-    type: OpenAPI
-  - url: json-schema/aci-dev-app-schema.json
-    type: JSONSchema
-  - url: json-schema/aci-dev-app-with-functions-schema.json
-    type: JSONSchema
-  - url: capabilities/apps.yaml
-    type: NaftikoCapability
-  description: Search and inspect the 600+ pre-built Apps in the ACI.dev catalog. Apps are external service integrations
-    (Slack, Gmail, Zendesk, GitHub, etc.) that expose Functions for AI agents to call. Search supports natural-language
-    intent for vector similarity ranking and filtering by category or configured-only.
-- aid: aci-dev:aci-dev-functions-api
-  name: ACI.dev Functions API
-  tags:
-  - Functions
-  - Tool Calling
-  - MCP
-  humanURL: https://aci.dev/docs/core-concepts/function.md
-  properties:
-  - url: https://aci.dev/docs/core-concepts/function.md
-    type: Documentation
-  - url: https://aci.dev/docs/api-reference/functions/search-functions.md
-    type: Documentation
-  - url: https://aci.dev/docs/api-reference/functions/get-function-definition.md
-    type: Documentation
-  - url: https://aci.dev/docs/api-reference/functions/execute.md
-    type: Documentation
-  - url: openapi/aci-dev-openapi.yml
-    type: OpenAPI
-  - url: json-schema/aci-dev-function-schema.json
-    type: JSONSchema
-  - url: json-schema/aci-dev-function-execute-schema.json
-    type: JSONSchema
-  - url: json-schema/aci-dev-function-execution-result-schema.json
-    type: JSONSchema
-  - url: json-schema/aci-dev-openai-function-definition-schema.json
-    type: JSONSchema
-  - url: json-schema/aci-dev-anthropic-function-definition-schema.json
-    type: JSONSchema
-  - url: examples/aci-dev-search-functions-example.json
-    type: Example
-  - url: examples/aci-dev-execute-function-example.json
-    type: Example
-  - url: capabilities/functions.yaml
-    type: NaftikoCapability
-  description: Search, inspect, and execute the callable Functions (tools) exposed by configured Apps. Function
-    definitions are returned in OpenAI- and Anthropic-compatible JSON Schema, and the same surface powers the unified
-    MCP server's ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools.
-- aid: aci-dev:aci-dev-app-configurations-api
-  name: ACI.dev App Configurations API
-  tags:
-  - App Configurations
-  - Governance
-  - Authentication
-  humanURL: https://aci.dev/docs/core-concepts/app-configuration.md
-  properties:
-  - url: https://aci.dev/docs/core-concepts/app-configuration.md
-    type: Documentation
-  - url: openapi/aci-dev-openapi.yml
-    type: OpenAPI
-  - url: json-schema/aci-dev-app-configuration-schema.json
-    type: JSONSchema
-  - url: capabilities/app-configurations.yaml
-    type: NaftikoCapability
-  description: Create and manage per-project App Configurations. An App Configuration declares which App is enabled,
-    which security scheme it should use (OAuth2, API key, or no-auth), which functions are permitted, and any
-    security-scheme overrides. App Configurations are the governance boundary for the ACI.dev tool catalog.
-- aid: aci-dev:aci-dev-linked-accounts-api
-  name: ACI.dev Linked Accounts API
-  tags:
-  - Linked Accounts
-  - OAuth
-  - Authentication
-  humanURL: https://aci.dev/docs/core-concepts/linked-account.md
-  properties:
-  - url: https://aci.dev/docs/core-concepts/linked-account.md
-    type: Documentation
-  - url: https://aci.dev/docs/api-reference/linked-accounts/link-oauth2-account.md
-    type: Documentation
-  - url: https://aci.dev/docs/api-reference/linked-accounts/linked-accounts-oauth2-callback.md
-    type: Documentation
-  - url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
-    type: Documentation
-  - url: openapi/aci-dev-openapi.yml
-    type: OpenAPI
-  - url: json-schema/aci-dev-linked-account-schema.json
-    type: JSONSchema
-  - url: examples/aci-dev-link-oauth2-account-example.json
-    type: Example
-  - url: capabilities/linked-accounts.yaml
-    type: NaftikoCapability
-  description: Manage end-user Linked Accounts for configured Apps. Initiate an OAuth2 link flow, handle the OAuth2
-    callback, list and retrieve linked accounts by owner ID, and revoke a Linked Account. White-label OAuth2 is
-    supported so production agents can present the customer's own brand during the consent screen.
+  - aid: aci-dev:aci-dev-apps-api
+    name: ACI.dev Apps API
+    tags:
+      - Apps
+      - Catalog
+      - Tool Calling
+    humanURL: https://aci.dev/docs/core-concepts/app.md
+    properties:
+      - url: https://aci.dev/docs/core-concepts/app.md
+        type: Documentation
+      - url: https://aci.dev/docs/api-reference/apps/search-apps.md
+        type: Documentation
+      - url: https://aci.dev/docs/api-reference/apps/get-app-details.md
+        type: Documentation
+      - url: openapi/aci-dev-openapi.yml
+        type: OpenAPI
+      - url: json-schema/aci-dev-app-schema.json
+        type: JSONSchema
+      - url: json-schema/aci-dev-app-with-functions-schema.json
+        type: JSONSchema
+    description: >-
+      Search and inspect the 600+ pre-built Apps in the ACI.dev catalog. Apps are external service integrations (Slack,
+      Gmail, Zendesk, GitHub, etc.) that expose Functions for AI agents to call. Search supports natural-language intent
+      for vector similarity ranking and filtering by category or configured-only.
+  - aid: aci-dev:aci-dev-functions-api
+    name: ACI.dev Functions API
+    tags:
+      - Functions
+      - Tool Calling
+      - MCP
+    humanURL: https://aci.dev/docs/core-concepts/function.md
+    properties:
+      - url: https://aci.dev/docs/core-concepts/function.md
+        type: Documentation
+      - url: https://aci.dev/docs/api-reference/functions/search-functions.md
+        type: Documentation
+      - url: https://aci.dev/docs/api-reference/functions/get-function-definition.md
+        type: Documentation
+      - url: https://aci.dev/docs/api-reference/functions/execute.md
+        type: Documentation
+      - url: openapi/aci-dev-openapi.yml
+        type: OpenAPI
+      - url: json-schema/aci-dev-function-schema.json
+        type: JSONSchema
+      - url: json-schema/aci-dev-function-execute-schema.json
+        type: JSONSchema
+      - url: json-schema/aci-dev-function-execution-result-schema.json
+        type: JSONSchema
+      - url: json-schema/aci-dev-openai-function-definition-schema.json
+        type: JSONSchema
+      - url: json-schema/aci-dev-anthropic-function-definition-schema.json
+        type: JSONSchema
+      - url: examples/aci-dev-search-functions-example.json
+        type: Example
+      - url: examples/aci-dev-execute-function-example.json
+        type: Example
+    description: >-
+      Search, inspect, and execute the callable Functions (tools) exposed by configured Apps. Function definitions are
+      returned in OpenAI- and Anthropic-compatible JSON Schema, and the same surface powers the unified MCP server's
+      ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools.
+  - aid: aci-dev:aci-dev-app-configurations-api
+    name: ACI.dev App Configurations API
+    tags:
+      - App Configurations
+      - Governance
+      - Authentication
+    humanURL: https://aci.dev/docs/core-concepts/app-configuration.md
+    properties:
+      - url: https://aci.dev/docs/core-concepts/app-configuration.md
+        type: Documentation
+      - url: openapi/aci-dev-openapi.yml
+        type: OpenAPI
+      - url: json-schema/aci-dev-app-configuration-schema.json
+        type: JSONSchema
+    description: >-
+      Create and manage per-project App Configurations. An App Configuration declares which App is enabled, which
+      security scheme it should use (OAuth2, API key, or no-auth), which functions are permitted, and any
+      security-scheme overrides. App Configurations are the governance boundary for the ACI.dev tool catalog.
+  - aid: aci-dev:aci-dev-linked-accounts-api
+    name: ACI.dev Linked Accounts API
+    tags:
+      - Linked Accounts
+      - OAuth
+      - Authentication
+    humanURL: https://aci.dev/docs/core-concepts/linked-account.md
+    properties:
+      - url: https://aci.dev/docs/core-concepts/linked-account.md
+        type: Documentation
+      - url: https://aci.dev/docs/api-reference/linked-accounts/link-oauth2-account.md
+        type: Documentation
+      - url: https://aci.dev/docs/api-reference/linked-accounts/linked-accounts-oauth2-callback.md
+        type: Documentation
+      - url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
+        type: Documentation
+      - url: openapi/aci-dev-openapi.yml
+        type: OpenAPI
+      - url: json-schema/aci-dev-linked-account-schema.json
+        type: JSONSchema
+      - url: examples/aci-dev-link-oauth2-account-example.json
+        type: Example
+    description: >-
+      Manage end-user Linked Accounts for configured Apps. Initiate an OAuth2 link flow, handle the OAuth2 callback,
+      list and retrieve linked accounts by owner ID, and revoke a Linked Account. White-label OAuth2 is supported so
+      production agents can present the customer's own brand during the consent screen.
 name: ACI.dev
 tags:
-- Agent Infrastructure
-- Agents
-- AI
-- Artificial Intelligence
-- Function Calling
-- MCP
-- Model Context Protocol
-- OAuth
-- Open Source
-- Tool Calling
-- VibeOps
+  - Agent Infrastructure
+  - Agents
+  - AI
+  - Artificial Intelligence
+  - Function Calling
+  - MCP
+  - Model Context Protocol
+  - OAuth
+  - Open Source
+  - Tool Calling
+  - VibeOps
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- type: Portal
-  url: https://aci.dev
-- type: Documentation
-  url: https://aci.dev/docs
-- type: GettingStarted
-  url: https://aci.dev/docs/introduction/quickstart.md
-- type: Documentation
-  url: https://aci.dev/docs/api-reference/overview.md
-  name: API Reference Overview
-- type: Documentation
-  url: https://aci.dev/docs/api-reference/openapi.json
-  name: ACI.dev OpenAPI (authoritative)
-- type: Documentation
-  url: https://aci.dev/docs/sdk/intro.md
-  name: SDK Introduction
-- type: Documentation
-  url: https://aci.dev/docs/sdk/custom-functions.md
-  name: Custom Functions
-- type: Documentation
-  url: https://aci.dev/docs/mcp-servers/introduction
-  name: MCP Servers Introduction
-- type: Documentation
-  url: https://aci.dev/docs/agent-playground/introduction.md
-  name: Agent Playground
-- type: Documentation
-  url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
-  name: White-label OAuth2
-- type: Documentation
-  url: https://aci.dev/docs/llms.txt
-  name: llms.txt Documentation Index
-- type: GitHubOrganization
-  url: https://github.com/aipotheosis-labs
-- url: https://github.com/aipotheosis-labs/aci
-  name: aci (open-source tool-calling platform)
-  type: SourceCode
-- url: https://github.com/aipotheosis-labs/aci-mcp
-  name: aci-mcp (Python MCP server)
-  type: SourceCode
-- url: https://github.com/aipotheosis-labs/aci-mcp-node
-  name: aci-mcp-node (Node/TypeScript MCP server)
-  type: SourceCode
-- url: https://github.com/aipotheosis-labs/aci-python-sdk
-  name: aci-python-sdk
-  type: SDK
-- url: https://github.com/aipotheosis-labs/aci-typescript-sdk
-  name: aci-typescript-sdk
-  type: SDK
-- url: https://github.com/aipotheosis-labs/aci-agents
-  name: aci-agents (example agents)
-  type: SourceCode
-- url: https://github.com/aipotheosis-labs/aci-developer-docs
-  name: aci-developer-docs
-  type: SourceCode
-- url: https://github.com/aipotheosis-labs/gate22
-  name: gate22 (MCP gateway and control plane)
-  type: SourceCode
-- url: https://github.com/aipotheosis-labs/gate22-docs
-  name: gate22-docs
-  type: SourceCode
-- url: https://platform.aci.dev
-  name: ACI.dev Platform Console
-  type: Documentation
-- url: https://discord.gg/nnqFSzq2ne
-  name: Aipolabs Discord
-  type: Documentation
-- url: https://www.linkedin.com/company/aipotheosis-labs-aipolabs
-  type: LinkedIn
-- url: https://twitter.com/AipoLabs
-  name: '@AipoLabs on X'
-  type: Twitter
-- url: https://www.youtube.com/@AipotheosisLabs
-  name: Aipotheosis Labs on YouTube
-  type: Documentation
-- type: License
-  url: https://www.apache.org/licenses/LICENSE-2.0
-  name: Apache License 2.0
-- type: Features
-  data:
-  - 600+ pre-built App integrations (Slack, Gmail, Zendesk, GitHub, Notion, Stripe, and more)
-  - Unified MCP server (aci-mcp) exposing ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools
-  - Apps MCP mode that surfaces a specific set of Apps as named MCP tools
-  - Node port (aci-mcp-node) for TypeScript-native MCP integration
-  - OpenAI-compatible and Anthropic-compatible function-definition output formats
-  - Multi-tenant end-user OAuth2 link flow, white-label OAuth2 for production branding
-  - Per-project App Configurations with function-level enable/disable and security-scheme overrides
-  - Natural-language permission filters that guardrail tool executions
-  - Custom functions SDK for registering proprietary tools alongside the catalog
-  - Agent Playground for prompting against the unified catalog before wiring it into production
-  - Python and TypeScript SDKs (aci-python-sdk, aci-typescript-sdk)
-  - Sister project gate22 — open-source MCP gateway and control plane for governance and audit across Cursor and
-    other agentic IDEs
-  - Self-hostable backend, frontend portal, and SDKs under Apache 2.0
-  sources:
-  - https://aci.dev
-  - https://aci.dev/docs/llms.txt
-  - https://github.com/aipotheosis-labs/aci
-  - https://github.com/aipotheosis-labs/aci-mcp
-  - https://github.com/aipotheosis-labs/gate22
-- type: Integrations
-  data:
-  - Anthropic Claude (function definitions returned in Anthropic tool-use format)
-  - OpenAI (function definitions returned in OpenAI tool-use format)
-  - Model Context Protocol (Cursor, Claude Desktop, Claude Code, and other MCP clients)
-  - GitHub, Gmail, Slack, Zendesk, Notion, Stripe and 600+ other apps via the ACI catalog
-  sources:
-  - https://aci.dev/docs/mcp-servers/introduction
-  - https://github.com/aipotheosis-labs/aci-mcp
-- url: vocabulary/aci-dev-vocabulary.yml
-  type: Vocabulary
-- url: rules/aci-dev-rules.yml
-  type: SpectralRules
-- url: json-ld/aci-dev-context.jsonld
-  type: JSONLD
+  - type: Portal
+    url: https://aci.dev
+  - type: Documentation
+    url: https://aci.dev/docs
+  - type: GettingStarted
+    url: https://aci.dev/docs/introduction/quickstart.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/overview.md
+    name: API Reference Overview
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/openapi.json
+    name: ACI.dev OpenAPI (authoritative)
+  - type: Documentation
+    url: https://aci.dev/docs/sdk/intro.md
+    name: SDK Introduction
+  - type: Documentation
+    url: https://aci.dev/docs/sdk/custom-functions.md
+    name: Custom Functions
+  - type: Documentation
+    url: https://aci.dev/docs/mcp-servers/introduction
+    name: MCP Servers Introduction
+  - type: Documentation
+    url: https://aci.dev/docs/agent-playground/introduction.md
+    name: Agent Playground
+  - type: Documentation
+    url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
+    name: White-label OAuth2
+  - type: Documentation
+    url: https://aci.dev/docs/llms.txt
+    name: llms.txt Documentation Index
+  - type: GitHubOrganization
+    url: https://github.com/aipotheosis-labs
+  - url: https://github.com/aipotheosis-labs/aci
+    name: aci (open-source tool-calling platform)
+    type: SourceCode
+  - url: https://github.com/aipotheosis-labs/aci-mcp
+    name: aci-mcp (Python MCP server)
+    type: SourceCode
+  - url: https://github.com/aipotheosis-labs/aci-mcp-node
+    name: aci-mcp-node (Node/TypeScript MCP server)
+    type: SourceCode
+  - url: https://github.com/aipotheosis-labs/aci-python-sdk
+    name: aci-python-sdk
+    type: SDK
+  - url: https://github.com/aipotheosis-labs/aci-typescript-sdk
+    name: aci-typescript-sdk
+    type: SDK
+  - url: https://github.com/aipotheosis-labs/aci-agents
+    name: aci-agents (example agents)
+    type: SourceCode
+  - url: https://github.com/aipotheosis-labs/aci-developer-docs
+    name: aci-developer-docs
+    type: SourceCode
+  - url: https://github.com/aipotheosis-labs/gate22
+    name: gate22 (MCP gateway and control plane)
+    type: SourceCode
+  - url: https://github.com/aipotheosis-labs/gate22-docs
+    name: gate22-docs
+    type: SourceCode
+  - url: https://platform.aci.dev
+    name: ACI.dev Platform Console
+    type: Documentation
+  - url: https://discord.gg/nnqFSzq2ne
+    name: Aipolabs Discord
+    type: Documentation
+  - url: https://www.linkedin.com/company/aipotheosis-labs-aipolabs
+    type: LinkedIn
+  - url: https://twitter.com/AipoLabs
+    name: '@AipoLabs on X'
+    type: Twitter
+  - url: https://www.youtube.com/@AipotheosisLabs
+    name: Aipotheosis Labs on YouTube
+    type: Documentation
+  - type: License
+    url: https://www.apache.org/licenses/LICENSE-2.0
+    name: Apache License 2.0
+  - type: Features
+    data:
+      - 600+ pre-built App integrations (Slack, Gmail, Zendesk, GitHub, Notion, Stripe, and more)
+      - Unified MCP server (aci-mcp) exposing ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools
+      - Apps MCP mode that surfaces a specific set of Apps as named MCP tools
+      - Node port (aci-mcp-node) for TypeScript-native MCP integration
+      - OpenAI-compatible and Anthropic-compatible function-definition output formats
+      - Multi-tenant end-user OAuth2 link flow, white-label OAuth2 for production branding
+      - Per-project App Configurations with function-level enable/disable and security-scheme overrides
+      - Natural-language permission filters that guardrail tool executions
+      - Custom functions SDK for registering proprietary tools alongside the catalog
+      - Agent Playground for prompting against the unified catalog before wiring it into production
+      - Python and TypeScript SDKs (aci-python-sdk, aci-typescript-sdk)
+      - >-
+        Sister project gate22 — open-source MCP gateway and control plane for governance and audit across Cursor and
+        other agentic IDEs
+      - Self-hostable backend, frontend portal, and SDKs under Apache 2.0
+    sources:
+      - https://aci.dev
+      - https://aci.dev/docs/llms.txt
+      - https://github.com/aipotheosis-labs/aci
+      - https://github.com/aipotheosis-labs/aci-mcp
+      - https://github.com/aipotheosis-labs/gate22
+  - type: Integrations
+    data:
+      - Anthropic Claude (function definitions returned in Anthropic tool-use format)
+      - OpenAI (function definitions returned in OpenAI tool-use format)
+      - Model Context Protocol (Cursor, Claude Desktop, Claude Code, and other MCP clients)
+      - GitHub, Gmail, Slack, Zendesk, Notion, Stripe and 600+ other apps via the ACI catalog
+    sources:
+      - https://aci.dev/docs/mcp-servers/introduction
+      - https://github.com/aipotheosis-labs/aci-mcp
+  - url: vocabulary/aci-dev-vocabulary.yml
+    type: Vocabulary
+  - url: rules/aci-dev-rules.yml
+    type: SpectralRules
+  - url: json-ld/aci-dev-context.jsonld
+    type: JSONLD
 created: '2026-05-25'
 modified: '2026-05-25'
 position: Producing
-description: ACI.dev (Aipolabs Agent-Computer Interface) is an open-source tool-calling platform that hooks AI
-  agents into 600+ pre-built tools through direct function calling or a unified Model Context Protocol server.
-  Maintained by Aipotheosis Labs (Aipolabs) under Apache 2.0, ACI provides multi-tenant OAuth2 and API-key
-  authentication, per-project App Configurations, natural-language permission guardrails, OpenAI- and
-  Anthropic-compatible function definitions, Python and TypeScript SDKs, and the unified aci-mcp server with
-  ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools. The sister project Gate22 adds an open-source MCP
-  gateway and control plane for governing which tools agents can use, what they can do, and how it is audited.
+description: >-
+  ACI.dev (Aipolabs Agent-Computer Interface) is an open-source tool-calling platform that hooks AI agents into 600+
+  pre-built tools through direct function calling or a unified Model Context Protocol server. Maintained by Aipotheosis
+  Labs (Aipolabs) under Apache 2.0, ACI provides multi-tenant OAuth2 and API-key authentication, per-project App
+  Configurations, natural-language permission guardrails, OpenAI- and Anthropic-compatible function definitions, Python
+  and TypeScript SDKs, and the unified aci-mcp server with ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools. The
+  sister project Gate22 adds an open-source MCP gateway and control plane for governing which tools agents can use, what
+  they can do, and how it is audited.
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com
 specificationVersion: '0.16'
