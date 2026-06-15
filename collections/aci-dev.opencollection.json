@@ -1,0 +1,478 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ACI.dev API",
+    "version": "0.0.1-beta.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/apps/search",
+            "params": [
+              {
+                "name": "intent",
+                "value": "",
+                "type": "query",
+                "description": "Natural language intent for vector similarity sorting. Results will be sorted by relevance to the intent."
+              },
+              {
+                "name": "configured_only",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return apps that have been configured."
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "List of categories for filtering."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of Apps per response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search for Apps.\nIntented to be used by agents to search for apps based on natural language intent."
+        },
+        {
+          "info": {
+            "name": "Get App Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/apps/:app_name",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns an application (name, description, and functions)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/functions/search",
+            "params": [
+              {
+                "name": "app_names",
+                "value": "",
+                "type": "query",
+                "description": "List of app names for filtering functions."
+              },
+              {
+                "name": "intent",
+                "value": "",
+                "type": "query",
+                "description": "Natural language intent for vector similarity sorting. Results will be sorted by relevance to the intent."
+              },
+              {
+                "name": "configured_only",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns functions of apps that are configured."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of Apps per response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the basic information of a list of functions."
+        },
+        {
+          "info": {
+            "name": "Get Function Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/functions/:function_name/definition",
+            "params": [
+              {
+                "name": "function_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "inference_provider",
+                "value": "",
+                "type": "query",
+                "description": "The inference provider, which determines the format of the function definition."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return the function definition that can be used directly by LLM.\nThe actual content depends on the intended model (inference provider, e.g., OpenAI, Anthropic, etc.) and the function itself."
+        },
+        {
+          "info": {
+            "name": "Execute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aci.dev/v1/functions/:function_name/execute",
+            "params": [
+              {
+                "name": "function_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Execute"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "app-configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List App Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/app-configurations",
+            "params": [
+              {
+                "name": "app_names",
+                "value": "",
+                "type": "query",
+                "description": "Filter by app names."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results per response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all app configurations for a project, with optionally filters"
+        },
+        {
+          "info": {
+            "name": "Create App Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aci.dev/v1/app-configurations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an app configuration for a project"
+        },
+        {
+          "info": {
+            "name": "Get App Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/app-configurations/:app_name",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get an app configuration by app name"
+        },
+        {
+          "info": {
+            "name": "Update App Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.aci.dev/v1/app-configurations/:app_name",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an app configuration by app name.\nIf a field is not included in the request body, it will not be changed."
+        },
+        {
+          "info": {
+            "name": "Delete App Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aci.dev/v1/app-configurations/:app_name",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an app configuration by app name\nWarning: This will delete the app configuration from the project,\nassociated linked accounts, and then the app configuration record itself."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "linked-accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Link Oauth2 Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/linked-accounts/oauth2",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "linked_account_owner_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after_oauth2_link_redirect_url",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Start an OAuth2 account linking process.\nIt will return a redirect url (as a string, instead of RedirectResponse) to the OAuth2 provider's authorization endpoint."
+        },
+        {
+          "info": {
+            "name": "Linked Accounts Oauth2 Callback",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/linked-accounts/oauth2/callback"
+          },
+          "docs": "Callback endpoint for OAuth2 account linking.\n- A linked account (with necessary credentials from the OAuth2 provider) will be created in the database."
+        },
+        {
+          "info": {
+            "name": "List Linked Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/linked-accounts",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "linked_account_owner_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all linked accounts.\n- Optionally filter by app_name and linked_account_owner_id.\n- app_name + linked_account_owner_id can uniquely identify a linked account.\n- This can be an alternatively way to GET /linked-accounts/{linked_account_id} for getting a specific linked account."
+        },
+        {
+          "info": {
+            "name": "Get Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/linked-accounts/:linked_account_id",
+            "params": [
+              {
+                "name": "linked_account_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a linked account by its id.\n- linked_account_id uniquely identifies a linked account across the platform."
+        },
+        {
+          "info": {
+            "name": "Delete Linked Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aci.dev/v1/linked-accounts/:linked_account_id",
+            "params": [
+              {
+                "name": "linked_account_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a linked account by its id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
