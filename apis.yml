@@ -54,9 +54,9 @@ apis:
       - url: json-schema/aci-dev-anthropic-function-definition-schema.json
         type: JSONSchema
       - url: examples/aci-dev-search-functions-example.json
-        type: Example
+        type: Examples
       - url: examples/aci-dev-execute-function-example.json
-        type: Example
+        type: Examples
     description: >-
       Search, inspect, and execute the callable Functions (tools) exposed by configured Apps. Function definitions are
       returned in OpenAI- and Anthropic-compatible JSON Schema, and the same surface powers the unified MCP server's
@@ -100,7 +100,7 @@ apis:
       - url: json-schema/aci-dev-linked-account-schema.json
         type: JSONSchema
       - url: examples/aci-dev-link-oauth2-account-example.json
-        type: Example
+        type: Examples
     description: >-
       Manage end-user Linked Accounts for configured Apps. Initiate an OAuth2 link flow, handle the OAuth2 callback,
       list and retrieve linked accounts by owner ID, and revoke a Linked Account. White-label OAuth2 is supported so
@@ -165,10 +165,10 @@ common:
     type: SourceCode
   - url: https://github.com/aipotheosis-labs/aci-python-sdk
     name: aci-python-sdk
-    type: SDK
+    type: SDKs
   - url: https://github.com/aipotheosis-labs/aci-typescript-sdk
     name: aci-typescript-sdk
-    type: SDK
+    type: SDKs
   - url: https://github.com/aipotheosis-labs/aci-agents
     name: aci-agents (example agents)
     type: SourceCode
