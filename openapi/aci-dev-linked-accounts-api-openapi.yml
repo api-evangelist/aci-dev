@@ -1,0 +1,272 @@
+openapi: 3.1.0
+info:
+  title: ACI.dev app-configurations linked-accounts API
+  version: 0.0.1-beta.3
+  description: Aipolabs ACI - Agent-Computer Interface. Open-source tool-calling platform that hooks AI agents into 600+ tools through unified function calling and MCP.
+  contact:
+    name: Aipolabs
+    url: https://aci.dev
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.aci.dev
+  description: ACI.dev production API
+tags:
+- name: linked-accounts
+paths:
+  /v1/linked-accounts/oauth2:
+    get:
+      tags:
+      - linked-accounts
+      summary: Link Oauth2 Account
+      description: 'Start an OAuth2 account linking process.
+
+        It will return a redirect url (as a string, instead of RedirectResponse) to the OAuth2 provider''s authorization endpoint.'
+      operationId: linked-accounts-link_oauth2_account
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: app_name
+        in: query
+        required: true
+        schema:
+          type: string
+          title: App Name
+      - name: linked_account_owner_id
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Linked Account Owner Id
+      - name: after_oauth2_link_redirect_url
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: After Oauth2 Link Redirect Url
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Linked-Accounts-Link Oauth2 Account
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/linked-accounts/oauth2/callback:
+    get:
+      tags:
+      - linked-accounts
+      summary: Linked Accounts Oauth2 Callback
+      description: 'Callback endpoint for OAuth2 account linking.
+
+        - A linked account (with necessary credentials from the OAuth2 provider) will be created in the database.'
+      operationId: linked-accounts-linked_accounts_oauth2_callback
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccountPublic'
+  /v1/linked-accounts:
+    get:
+      tags:
+      - linked-accounts
+      summary: List Linked Accounts
+      description: 'List all linked accounts.
+
+        - Optionally filter by app_name and linked_account_owner_id.
+
+        - app_name + linked_account_owner_id can uniquely identify a linked account.
+
+        - This can be an alternatively way to GET /linked-accounts/{linked_account_id} for getting a specific linked account.'
+      operationId: linked-accounts-list_linked_accounts
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: app_name
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: App Name
+      - name: linked_account_owner_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Linked Account Owner Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LinkedAccountPublic'
+                title: Response Linked-Accounts-List Linked Accounts
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/linked-accounts/{linked_account_id}:
+    get:
+      tags:
+      - linked-accounts
+      summary: Get Linked Account
+      description: 'Get a linked account by its id.
+
+        - linked_account_id uniquely identifies a linked account across the platform.'
+      operationId: linked-accounts-get_linked_account
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: linked_account_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Linked Account Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkedAccountPublic'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - linked-accounts
+      summary: Delete Linked Account
+      description: Delete a linked account by its id.
+      operationId: linked-accounts-delete_linked_account
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: linked_account_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Linked Account Id
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    SecurityScheme:
+      type: string
+      enum:
+      - no_auth
+      - api_key
+      - http_basic
+      - http_bearer
+      - oauth2
+      title: SecurityScheme
+      description: security scheme type for an app (or function if support override)
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    LinkedAccountPublic:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        project_id:
+          type: string
+          format: uuid
+          title: Project Id
+        app_name:
+          type: string
+          title: App Name
+        linked_account_owner_id:
+          type: string
+          title: Linked Account Owner Id
+        security_scheme:
+          $ref: '#/components/schemas/SecurityScheme'
+        enabled:
+          type: boolean
+          title: Enabled
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - project_id
+      - app_name
+      - linked_account_owner_id
+      - security_scheme
+      - enabled
+      - created_at
+      - updated_at
+      title: LinkedAccountPublic
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      description: API key for authentication
+      in: header
+      name: X-API-KEY

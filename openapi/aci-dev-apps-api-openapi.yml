@@ -1,0 +1,209 @@
+openapi: 3.1.0
+info:
+  title: ACI.dev app-configurations apps API
+  version: 0.0.1-beta.3
+  description: Aipolabs ACI - Agent-Computer Interface. Open-source tool-calling platform that hooks AI agents into 600+ tools through unified function calling and MCP.
+  contact:
+    name: Aipolabs
+    url: https://aci.dev
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.aci.dev
+  description: ACI.dev production API
+tags:
+- name: apps
+paths:
+  /v1/apps/search:
+    get:
+      tags:
+      - apps
+      summary: Search Apps
+      description: 'Search for Apps.
+
+        Intented to be used by agents to search for apps based on natural language intent.'
+      operationId: apps-search_apps
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: intent
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Natural language intent for vector similarity sorting. Results will be sorted by relevance to the intent.
+          title: Intent
+        description: Natural language intent for vector similarity sorting. Results will be sorted by relevance to the intent.
+      - name: configured_only
+        in: query
+        required: false
+        schema:
+          type: boolean
+          description: If true, only return apps that have been configured.
+          default: false
+          title: Configured Only
+        description: If true, only return apps that have been configured.
+      - name: categories
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: array
+            items:
+              type: string
+          - type: 'null'
+          description: List of categories for filtering.
+          title: Categories
+        description: List of categories for filtering.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 1
+          description: Maximum number of Apps per response.
+          default: 100
+          title: Limit
+        description: Maximum number of Apps per response.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Pagination offset.
+          default: 0
+          title: Offset
+        description: Pagination offset.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AppBasic'
+                title: Response Apps-Search Apps
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/apps/{app_name}:
+    get:
+      tags:
+      - apps
+      summary: Get App Details
+      description: Returns an application (name, description, and functions).
+      operationId: apps-get_app_details
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: app_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: App Name
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppBasicWithFunctions'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    AppBasicWithFunctions:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        functions:
+          items:
+            $ref: '#/components/schemas/FunctionBasic'
+          type: array
+          title: Functions
+      type: object
+      required:
+      - name
+      - description
+      - functions
+      title: AppBasicWithFunctions
+    FunctionBasic:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - name
+      - description
+      title: FunctionBasic
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    AppBasic:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - name
+      - description
+      title: AppBasic
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      description: API key for authentication
+      in: header
+      name: X-API-KEY
