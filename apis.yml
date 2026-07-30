@@ -1,110 +1,234 @@
 aid: aci-dev
 url: https://raw.githubusercontent.com/api-evangelist/aci-dev/refs/heads/main/apis.yml
 apis:
-  - aid: aci-dev:aci-dev-apps-api
-    name: ACI.dev Apps API
-    tags:
-      - Apps
-      - Catalog
-      - Tool Calling
-    humanURL: https://aci.dev/docs/core-concepts/app.md
-    properties:
-      - url: https://aci.dev/docs/core-concepts/app.md
-        type: Documentation
-      - url: https://aci.dev/docs/api-reference/apps/search-apps.md
-        type: Documentation
-      - url: https://aci.dev/docs/api-reference/apps/get-app-details.md
-        type: Documentation
-      - url: openapi/aci-dev-openapi.yml
-        type: OpenAPI
-      - url: json-schema/aci-dev-app-schema.json
-        type: JSONSchema
-      - url: json-schema/aci-dev-app-with-functions-schema.json
-        type: JSONSchema
-    description: >-
-      Search and inspect the 600+ pre-built Apps in the ACI.dev catalog. Apps are external service integrations (Slack,
-      Gmail, Zendesk, GitHub, etc.) that expose Functions for AI agents to call. Search supports natural-language intent
-      for vector similarity ranking and filtering by category or configured-only.
-  - aid: aci-dev:aci-dev-functions-api
-    name: ACI.dev Functions API
-    tags:
-      - Functions
-      - Tool Calling
-      - MCP
-    humanURL: https://aci.dev/docs/core-concepts/function.md
-    properties:
-      - url: https://aci.dev/docs/core-concepts/function.md
-        type: Documentation
-      - url: https://aci.dev/docs/api-reference/functions/search-functions.md
-        type: Documentation
-      - url: https://aci.dev/docs/api-reference/functions/get-function-definition.md
-        type: Documentation
-      - url: https://aci.dev/docs/api-reference/functions/execute.md
-        type: Documentation
-      - url: openapi/aci-dev-openapi.yml
-        type: OpenAPI
-      - url: json-schema/aci-dev-function-schema.json
-        type: JSONSchema
-      - url: json-schema/aci-dev-function-execute-schema.json
-        type: JSONSchema
-      - url: json-schema/aci-dev-function-execution-result-schema.json
-        type: JSONSchema
-      - url: json-schema/aci-dev-openai-function-definition-schema.json
-        type: JSONSchema
-      - url: json-schema/aci-dev-anthropic-function-definition-schema.json
-        type: JSONSchema
-      - url: examples/aci-dev-search-functions-example.json
-        type: Examples
-      - url: examples/aci-dev-execute-function-example.json
-        type: Examples
-    description: >-
-      Search, inspect, and execute the callable Functions (tools) exposed by configured Apps. Function definitions are
-      returned in OpenAI- and Anthropic-compatible JSON Schema, and the same surface powers the unified MCP server's
-      ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools.
-  - aid: aci-dev:aci-dev-app-configurations-api
-    name: ACI.dev App Configurations API
-    tags:
-      - App Configurations
-      - Governance
-      - Authentication
-    humanURL: https://aci.dev/docs/core-concepts/app-configuration.md
-    properties:
-      - url: https://aci.dev/docs/core-concepts/app-configuration.md
-        type: Documentation
-      - url: openapi/aci-dev-openapi.yml
-        type: OpenAPI
-      - url: json-schema/aci-dev-app-configuration-schema.json
-        type: JSONSchema
-    description: >-
-      Create and manage per-project App Configurations. An App Configuration declares which App is enabled, which
-      security scheme it should use (OAuth2, API key, or no-auth), which functions are permitted, and any
-      security-scheme overrides. App Configurations are the governance boundary for the ACI.dev tool catalog.
-  - aid: aci-dev:aci-dev-linked-accounts-api
-    name: ACI.dev Linked Accounts API
-    tags:
-      - Linked Accounts
-      - OAuth
-      - Authentication
-    humanURL: https://aci.dev/docs/core-concepts/linked-account.md
-    properties:
-      - url: https://aci.dev/docs/core-concepts/linked-account.md
-        type: Documentation
-      - url: https://aci.dev/docs/api-reference/linked-accounts/link-oauth2-account.md
-        type: Documentation
-      - url: https://aci.dev/docs/api-reference/linked-accounts/linked-accounts-oauth2-callback.md
-        type: Documentation
-      - url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
-        type: Documentation
-      - url: openapi/aci-dev-openapi.yml
-        type: OpenAPI
-      - url: json-schema/aci-dev-linked-account-schema.json
-        type: JSONSchema
-      - url: examples/aci-dev-link-oauth2-account-example.json
-        type: Examples
-    description: >-
-      Manage end-user Linked Accounts for configured Apps. Initiate an OAuth2 link flow, handle the OAuth2 callback,
-      list and retrieve linked accounts by owner ID, and revoke a Linked Account. White-label OAuth2 is supported so
-      production agents can present the customer's own brand during the consent screen.
+- aid: aci-dev:aci-dev-app-configurations-api
+  name: ACI.dev app-configurations API
+  description: The app-configurations API from ACI.dev — 2 operation(s) for app-configurations.
+  humanURL: https://aci.dev/docs/core-concepts/app.md
+  tags:
+  - app-configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/aci-dev-app-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/app.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/apps/search-apps.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/apps/get-app-details.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-with-functions-schema.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/function.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/search-functions.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/get-function-definition.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/execute.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-execute-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-execution-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-openai-function-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-anthropic-function-definition-schema.json
+  - type: Examples
+    url: examples/aci-dev-search-functions-example.json
+  - type: Examples
+    url: examples/aci-dev-execute-function-example.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/app-configuration.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-configuration-schema.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/linked-account.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/linked-accounts/link-oauth2-account.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/linked-accounts/linked-accounts-oauth2-callback.md
+  - type: Documentation
+    url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-linked-account-schema.json
+  - type: Examples
+    url: examples/aci-dev-link-oauth2-account-example.json
+- aid: aci-dev:aci-dev-apps-api
+  name: ACI.dev apps API
+  description: The apps API from ACI.dev — 2 operation(s) for apps.
+  humanURL: https://aci.dev/docs/core-concepts/app.md
+  tags:
+  - apps
+  properties:
+  - type: OpenAPI
+    url: openapi/aci-dev-apps-api-openapi.yml
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/app.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/apps/search-apps.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/apps/get-app-details.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-with-functions-schema.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/function.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/search-functions.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/get-function-definition.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/execute.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-execute-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-execution-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-openai-function-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-anthropic-function-definition-schema.json
+  - type: Examples
+    url: examples/aci-dev-search-functions-example.json
+  - type: Examples
+    url: examples/aci-dev-execute-function-example.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/app-configuration.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-configuration-schema.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/linked-account.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/linked-accounts/link-oauth2-account.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/linked-accounts/linked-accounts-oauth2-callback.md
+  - type: Documentation
+    url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-linked-account-schema.json
+  - type: Examples
+    url: examples/aci-dev-link-oauth2-account-example.json
+- aid: aci-dev:aci-dev-functions-api
+  name: ACI.dev functions API
+  description: The functions API from ACI.dev — 3 operation(s) for functions.
+  humanURL: https://aci.dev/docs/core-concepts/app.md
+  tags:
+  - functions
+  properties:
+  - type: OpenAPI
+    url: openapi/aci-dev-functions-api-openapi.yml
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/app.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/apps/search-apps.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/apps/get-app-details.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-with-functions-schema.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/function.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/search-functions.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/get-function-definition.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/execute.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-execute-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-execution-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-openai-function-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-anthropic-function-definition-schema.json
+  - type: Examples
+    url: examples/aci-dev-search-functions-example.json
+  - type: Examples
+    url: examples/aci-dev-execute-function-example.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/app-configuration.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-configuration-schema.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/linked-account.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/linked-accounts/link-oauth2-account.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/linked-accounts/linked-accounts-oauth2-callback.md
+  - type: Documentation
+    url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-linked-account-schema.json
+  - type: Examples
+    url: examples/aci-dev-link-oauth2-account-example.json
+- aid: aci-dev:aci-dev-linked-accounts-api
+  name: ACI.dev linked-accounts API
+  description: The linked-accounts API from ACI.dev — 4 operation(s) for linked-accounts.
+  humanURL: https://aci.dev/docs/core-concepts/app.md
+  tags:
+  - linked-accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/aci-dev-linked-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/app.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/apps/search-apps.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/apps/get-app-details.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-with-functions-schema.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/function.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/search-functions.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/get-function-definition.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/functions/execute.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-execute-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-function-execution-result-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-openai-function-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/aci-dev-anthropic-function-definition-schema.json
+  - type: Examples
+    url: examples/aci-dev-search-functions-example.json
+  - type: Examples
+    url: examples/aci-dev-execute-function-example.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/app-configuration.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-app-configuration-schema.json
+  - type: Documentation
+    url: https://aci.dev/docs/core-concepts/linked-account.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/linked-accounts/link-oauth2-account.md
+  - type: Documentation
+    url: https://aci.dev/docs/api-reference/linked-accounts/linked-accounts-oauth2-callback.md
+  - type: Documentation
+    url: https://aci.dev/docs/advanced/oauth2-whitelabel.md
+  - type: JSONSchema
+    url: json-schema/aci-dev-linked-account-schema.json
+  - type: Examples
+    url: examples/aci-dev-link-oauth2-account-example.json
 name: ACI.dev
 tags:
   - Agent Infrastructure
@@ -119,7 +243,19 @@ tags:
   - Tool Calling
   - VibeOps
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aci-dev.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
