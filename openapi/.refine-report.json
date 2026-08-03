@@ -1,0 +1,20 @@
+{
+  "provider": "aci-dev",
+  "sources": [
+    "aci-dev-app-configurations-api-openapi.yml",
+    "aci-dev-apps-api-openapi.yml",
+    "aci-dev-functions-api-openapi.yml",
+    "aci-dev-linked-accounts-api-openapi.yml"
+  ],
+  "outputs": [
+    "aci-dev-app-configurations-api-openapi.yml",
+    "aci-dev-apps-api-openapi.yml",
+    "aci-dev-functions-api-openapi.yml",
+    "aci-dev-linked-accounts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
