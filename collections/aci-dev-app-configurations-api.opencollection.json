@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ACI.dev app-configurations API",
+    "version": "0.0.1-beta.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "app-configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List App Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/app-configurations",
+            "params": [
+              {
+                "name": "app_names",
+                "value": "",
+                "type": "query",
+                "description": "Filter by app names."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results per response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all app configurations for a project, with optionally filters"
+        },
+        {
+          "info": {
+            "name": "Create App Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aci.dev/v1/app-configurations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an app configuration for a project"
+        },
+        {
+          "info": {
+            "name": "Get App Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/app-configurations/:app_name",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get an app configuration by app name"
+        },
+        {
+          "info": {
+            "name": "Update App Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.aci.dev/v1/app-configurations/:app_name",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an app configuration by app name.\nIf a field is not included in the request body, it will not be changed."
+        },
+        {
+          "info": {
+            "name": "Delete App Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aci.dev/v1/app-configurations/:app_name",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an app configuration by app name\nWarning: This will delete the app configuration from the project,\nassociated linked accounts, and then the app configuration record itself."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

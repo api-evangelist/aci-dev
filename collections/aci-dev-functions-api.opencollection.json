@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ACI.dev app-configurations functions API",
+    "version": "0.0.1-beta.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/functions/search",
+            "params": [
+              {
+                "name": "app_names",
+                "value": "",
+                "type": "query",
+                "description": "List of app names for filtering functions."
+              },
+              {
+                "name": "intent",
+                "value": "",
+                "type": "query",
+                "description": "Natural language intent for vector similarity sorting. Results will be sorted by relevance to the intent."
+              },
+              {
+                "name": "configured_only",
+                "value": "",
+                "type": "query",
+                "description": "If true, only returns functions of apps that are configured."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of Apps per response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the basic information of a list of functions."
+        },
+        {
+          "info": {
+            "name": "Get Function Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/functions/:function_name/definition",
+            "params": [
+              {
+                "name": "function_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "inference_provider",
+                "value": "",
+                "type": "query",
+                "description": "The inference provider, which determines the format of the function definition."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return the function definition that can be used directly by LLM.\nThe actual content depends on the intended model (inference provider, e.g., OpenAI, Anthropic, etc.) and the function itself."
+        },
+        {
+          "info": {
+            "name": "Execute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aci.dev/v1/functions/:function_name/execute",
+            "params": [
+              {
+                "name": "function_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Execute"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

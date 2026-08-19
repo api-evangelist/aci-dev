@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ACI.dev app-configurations apps API",
+    "version": "0.0.1-beta.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/apps/search",
+            "params": [
+              {
+                "name": "intent",
+                "value": "",
+                "type": "query",
+                "description": "Natural language intent for vector similarity sorting. Results will be sorted by relevance to the intent."
+              },
+              {
+                "name": "configured_only",
+                "value": "",
+                "type": "query",
+                "description": "If true, only return apps that have been configured."
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "List of categories for filtering."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of Apps per response."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search for Apps.\nIntented to be used by agents to search for apps based on natural language intent."
+        },
+        {
+          "info": {
+            "name": "Get App Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aci.dev/v1/apps/:app_name",
+            "params": [
+              {
+                "name": "app_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns an application (name, description, and functions)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
