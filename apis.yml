@@ -6,7 +6,7 @@ apis:
   description: The app-configurations API from ACI.dev — 2 operation(s) for app-configurations.
   humanURL: https://aci.dev/docs/core-concepts/app.md
   tags:
-  - App Configurations
+  - app-configurations
   tags_raw:
   - app-configurations
   properties:
@@ -124,7 +124,7 @@ apis:
   description: The functions API from ACI.dev — 3 operation(s) for functions.
   humanURL: https://aci.dev/docs/core-concepts/app.md
   tags:
-  - Functions
+  - functions
   tags_raw:
   - functions
   properties:
@@ -183,7 +183,7 @@ apis:
   description: The linked-accounts API from ACI.dev — 4 operation(s) for linked-accounts.
   humanURL: https://aci.dev/docs/core-concepts/app.md
   tags:
-  - Linked Accounts
+  - linked-accounts
   tags_raw:
   - linked-accounts
   properties:
