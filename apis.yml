@@ -1,5 +1,9 @@
 aid: aci-dev
 url: https://raw.githubusercontent.com/api-evangelist/aci-dev/refs/heads/main/apis.yml
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
+x-docs-hosting: vercel
 apis:
 - aid: aci-dev:aci-dev-app-configurations-api
   name: ACI.dev app-configurations API
