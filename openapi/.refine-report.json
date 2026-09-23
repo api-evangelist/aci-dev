@@ -1,10 +1,7 @@
 {
   "provider": "aci-dev",
   "sources": [
-    "aci-dev-app-configurations-api-openapi.yml",
-    "aci-dev-apps-api-openapi.yml",
-    "aci-dev-functions-api-openapi.yml",
-    "aci-dev-linked-accounts-api-openapi.yml"
+    "_original/aci-dev-openapi.yml"
   ],
   "outputs": [
     "aci-dev-app-configurations-api-openapi.yml",
@@ -15,6 +12,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "aci-dev-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "aci-dev-openapi.yml: declared missing tag: app-configurations",
+    "aci-dev-openapi.yml: declared missing tag: apps",
+    "aci-dev-openapi.yml: declared missing tag: functions",
+    "aci-dev-openapi.yml: declared missing tag: linked-accounts",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "aci-dev-app-configurations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aci-dev-apps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aci-dev-functions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aci-dev-linked-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

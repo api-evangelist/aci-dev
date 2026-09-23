@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: ACI.dev app-configurations API
+  title: ACI.dev App Configurations API
   version: 0.0.1-beta.3
   description: Aipolabs ACI - Agent-Computer Interface. Open-source tool-calling platform that hooks AI agents into 600+ tools through unified function calling and MCP.
   contact:
@@ -13,12 +13,12 @@ servers:
 - url: https://api.aci.dev
   description: ACI.dev production API
 tags:
-- name: app-configurations
+- name: App Configurations
 paths:
   /v1/app-configurations:
     post:
       tags:
-      - app-configurations
+      - App Configurations
       summary: Create App Configuration
       description: Create an app configuration for a project
       operationId: app-configurations-create_app_configuration
@@ -45,7 +45,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     get:
       tags:
-      - app-configurations
+      - App Configurations
       summary: List App Configurations
       description: List all app configurations for a project, with optionally filters
       operationId: app-configurations-list_app_configurations
@@ -104,7 +104,7 @@ paths:
   /v1/app-configurations/{app_name}:
     get:
       tags:
-      - app-configurations
+      - App Configurations
       summary: Get App Configuration
       description: Get an app configuration by app name
       operationId: app-configurations-get_app_configuration
@@ -132,7 +132,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     delete:
       tags:
-      - app-configurations
+      - App Configurations
       summary: Delete App Configuration
       description: 'Delete an app configuration by app name
 
@@ -163,7 +163,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     patch:
       tags:
-      - app-configurations
+      - App Configurations
       summary: Update App Configuration
       description: 'Update an app configuration by app name.
 
@@ -199,57 +199,16 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    AppConfigurationUpdate:
-      properties:
-        security_scheme:
-          anyOf:
-          - $ref: '#/components/schemas/SecurityScheme'
-          - type: 'null'
-        security_scheme_overrides:
-          anyOf:
-          - type: object
-          - type: 'null'
-          title: Security Scheme Overrides
-        enabled:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Enabled
-        all_functions_enabled:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: All Functions Enabled
-        enabled_functions:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Enabled Functions
-      type: object
-      title: AppConfigurationUpdate
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+    SecurityScheme:
+      type: string
+      enum:
+      - no_auth
+      - api_key
+      - http_basic
+      - http_bearer
+      - oauth2
+      title: SecurityScheme
+      description: security scheme type for an app (or function if support override)
     AppConfigurationCreate:
       properties:
         app_name:
@@ -281,16 +240,66 @@ components:
         “all_functions_enabled=False” AND non-empty enabled_functions → selectively enable that list.
 
         “all_functions_enabled=False” AND empty enabled_functions → all functions disabled.'
-    SecurityScheme:
-      type: string
-      enum:
-      - no_auth
-      - api_key
-      - http_basic
-      - http_bearer
-      - oauth2
-      title: SecurityScheme
-      description: security scheme type for an app (or function if support override)
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    AppConfigurationUpdate:
+      properties:
+        security_scheme:
+          anyOf:
+          - $ref: '#/components/schemas/SecurityScheme'
+          - type: 'null'
+        security_scheme_overrides:
+          anyOf:
+          - type: object
+          - type: 'null'
+          title: Security Scheme Overrides
+        enabled:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Enabled
+        all_functions_enabled:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: All Functions Enabled
+        enabled_functions:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Enabled Functions
+      type: object
+      title: AppConfigurationUpdate
     AppConfigurationPublic:
       properties:
         id:
@@ -341,15 +350,6 @@ components:
       - created_at
       - updated_at
       title: AppConfigurationPublic
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
   securitySchemes:
     APIKeyHeader:
       type: apiKey

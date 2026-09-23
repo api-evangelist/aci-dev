@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: ACI.dev app-configurations linked-accounts API
+  title: ACI.dev Linked Accounts API
   version: 0.0.1-beta.3
   description: Aipolabs ACI - Agent-Computer Interface. Open-source tool-calling platform that hooks AI agents into 600+ tools through unified function calling and MCP.
   contact:
@@ -13,12 +13,12 @@ servers:
 - url: https://api.aci.dev
   description: ACI.dev production API
 tags:
-- name: linked-accounts
+- name: Linked Accounts
 paths:
   /v1/linked-accounts/oauth2:
     get:
       tags:
-      - linked-accounts
+      - Linked Accounts
       summary: Link Oauth2 Account
       description: 'Start an OAuth2 account linking process.
 
@@ -64,7 +64,7 @@ paths:
   /v1/linked-accounts/oauth2/callback:
     get:
       tags:
-      - linked-accounts
+      - Linked Accounts
       summary: Linked Accounts Oauth2 Callback
       description: 'Callback endpoint for OAuth2 account linking.
 
@@ -80,7 +80,7 @@ paths:
   /v1/linked-accounts:
     get:
       tags:
-      - linked-accounts
+      - Linked Accounts
       summary: List Linked Accounts
       description: 'List all linked accounts.
 
@@ -128,7 +128,7 @@ paths:
   /v1/linked-accounts/{linked_account_id}:
     get:
       tags:
-      - linked-accounts
+      - Linked Accounts
       summary: Get Linked Account
       description: 'Get a linked account by its id.
 
@@ -159,7 +159,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
     delete:
       tags:
-      - linked-accounts
+      - Linked Accounts
       summary: Delete Linked Account
       description: Delete a linked account by its id.
       operationId: linked-accounts-delete_linked_account
@@ -184,16 +184,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    SecurityScheme:
-      type: string
-      enum:
-      - no_auth
-      - api_key
-      - http_basic
-      - http_bearer
-      - oauth2
-      title: SecurityScheme
-      description: security scheme type for an app (or function if support override)
     ValidationError:
       properties:
         loc:
@@ -215,6 +205,25 @@ components:
       - msg
       - type
       title: ValidationError
+    SecurityScheme:
+      type: string
+      enum:
+      - no_auth
+      - api_key
+      - http_basic
+      - http_bearer
+      - oauth2
+      title: SecurityScheme
+      description: security scheme type for an app (or function if support override)
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     LinkedAccountPublic:
       properties:
         id:
@@ -255,15 +264,6 @@ components:
       - created_at
       - updated_at
       title: LinkedAccountPublic
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
   securitySchemes:
     APIKeyHeader:
       type: apiKey
