@@ -6,7 +6,7 @@ x-docs-platform-checked: 2026-09-17
 x-docs-hosting: vercel
 apis:
 - aid: aci-dev:aci-dev-app-configurations-api
-  name: ACI.dev app-configurations API
+  name: ACI.dev App Configurations API
   description: The app-configurations API from ACI.dev — 2 operation(s) for app-configurations.
   humanURL: https://aci.dev/docs/core-concepts/app.md
   tags:
@@ -65,7 +65,7 @@ apis:
   - type: Examples
     url: examples/aci-dev-link-oauth2-account-example.json
 - aid: aci-dev:aci-dev-apps-api
-  name: ACI.dev apps API
+  name: ACI.dev Apps API
   description: The apps API from ACI.dev — 2 operation(s) for apps.
   humanURL: https://aci.dev/docs/core-concepts/app.md
   tags:
@@ -124,7 +124,7 @@ apis:
   - type: Examples
     url: examples/aci-dev-link-oauth2-account-example.json
 - aid: aci-dev:aci-dev-functions-api
-  name: ACI.dev functions API
+  name: ACI.dev Functions API
   description: The functions API from ACI.dev — 3 operation(s) for functions.
   humanURL: https://aci.dev/docs/core-concepts/app.md
   tags:
@@ -183,7 +183,7 @@ apis:
   - type: Examples
     url: examples/aci-dev-link-oauth2-account-example.json
 - aid: aci-dev:aci-dev-linked-accounts-api
-  name: ACI.dev linked-accounts API
+  name: ACI.dev Linked Accounts API
   description: The linked-accounts API from ACI.dev — 4 operation(s) for linked-accounts.
   humanURL: https://aci.dev/docs/core-concepts/app.md
   tags:
@@ -249,7 +249,7 @@ tags:
   - Function Calling
   - MCP
   - Authentication
-  - Open-Source
+  - Open Source
   - Tool Calling
   - VibeOps
 tags_raw:
@@ -264,6 +264,7 @@ tags_raw:
   - Open Source
   - Tool Calling
   - VibeOps
+  - Open-Source
 kind: contract
 deliveryModel:
   model: library

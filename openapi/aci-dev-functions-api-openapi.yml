@@ -193,40 +193,6 @@ components:
       - description
       - parameters
       title: OpenAIFunction
-    FunctionBasic:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-      type: object
-      required:
-      - name
-      - description
-      title: FunctionBasic
-    InferenceProvider:
-      type: string
-      enum:
-      - openai
-      - anthropic
-      title: InferenceProvider
-    FunctionExecute:
-      properties:
-        function_input:
-          type: object
-          title: Function Input
-          description: The input parameters for the function.
-        linked_account_owner_id:
-          type: string
-          maxLength: 255
-          title: Linked Account Owner Id
-          description: The owner id of the linked account. This is the id of the linked account owner in the linked account provider.
-      type: object
-      required:
-      - linked_account_owner_id
-      title: FunctionExecute
     HTTPValidationError:
       properties:
         detail:
@@ -236,6 +202,25 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    FunctionExecutionResult:
+      properties:
+        success:
+          type: boolean
+          title: Success
+        data:
+          anyOf:
+          - {}
+          - type: 'null'
+          title: Data
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error
+      type: object
+      required:
+      - success
+      title: FunctionExecutionResult
     ValidationError:
       properties:
         loc:
@@ -257,40 +242,27 @@ components:
       - msg
       - type
       title: ValidationError
-    FunctionExecutionResult:
+    InferenceProvider:
+      type: string
+      enum:
+      - openai
+      - anthropic
+      title: InferenceProvider
+    FunctionExecute:
       properties:
-        success:
-          type: boolean
-          title: Success
-        data:
-          anyOf:
-          - {}
-          - type: 'null'
-          title: Data
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Error
-      type: object
-      required:
-      - success
-      title: FunctionExecutionResult
-    OpenAIFunctionDefinition:
-      properties:
-        type:
+        function_input:
+          type: object
+          title: Function Input
+          description: The input parameters for the function.
+        linked_account_owner_id:
           type: string
-          enum:
-          - function
-          const: function
-          title: Type
-          default: function
-        function:
-          $ref: '#/components/schemas/OpenAIFunction'
+          maxLength: 255
+          title: Linked Account Owner Id
+          description: The owner id of the linked account. This is the id of the linked account owner in the linked account provider.
       type: object
       required:
-      - function
-      title: OpenAIFunctionDefinition
+      - linked_account_owner_id
+      title: FunctionExecute
     AnthropicFunctionDefinition:
       properties:
         name:
@@ -308,6 +280,34 @@ components:
       - description
       - input_schema
       title: AnthropicFunctionDefinition
+    FunctionBasic:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - name
+      - description
+      title: FunctionBasic
+    OpenAIFunctionDefinition:
+      properties:
+        type:
+          type: string
+          enum:
+          - function
+          const: function
+          title: Type
+          default: function
+        function:
+          $ref: '#/components/schemas/OpenAIFunction'
+      type: object
+      required:
+      - function
+      title: OpenAIFunctionDefinition
   securitySchemes:
     APIKeyHeader:
       type: apiKey

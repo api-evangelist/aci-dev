@@ -184,37 +184,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    SecurityScheme:
-      type: string
-      enum:
-      - no_auth
-      - api_key
-      - http_basic
-      - http_bearer
-      - oauth2
-      title: SecurityScheme
-      description: security scheme type for an app (or function if support override)
     HTTPValidationError:
       properties:
         detail:
@@ -264,6 +233,37 @@ components:
       - created_at
       - updated_at
       title: LinkedAccountPublic
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    SecurityScheme:
+      type: string
+      enum:
+      - no_auth
+      - api_key
+      - http_basic
+      - http_bearer
+      - oauth2
+      title: SecurityScheme
+      description: security scheme type for an app (or function if support override)
   securitySchemes:
     APIKeyHeader:
       type: apiKey
