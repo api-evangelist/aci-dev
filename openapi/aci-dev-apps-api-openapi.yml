@@ -135,25 +135,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    AppBasicWithFunctions:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        functions:
-          items:
-            $ref: '#/components/schemas/FunctionBasic'
-          type: array
-          title: Functions
-      type: object
-      required:
-      - name
-      - description
-      - functions
-      title: AppBasicWithFunctions
     ValidationError:
       properties:
         loc:
@@ -188,6 +169,25 @@ components:
       - name
       - description
       title: FunctionBasic
+    AppBasicWithFunctions:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        functions:
+          items:
+            $ref: '#/components/schemas/FunctionBasic'
+          type: array
+          title: Functions
+      type: object
+      required:
+      - name
+      - description
+      - functions
+      title: AppBasicWithFunctions
     AppBasic:
       properties:
         name:

@@ -171,6 +171,31 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    FunctionExecutionResult:
+      properties:
+        success:
+          type: boolean
+          title: Success
+        data:
+          anyOf:
+          - {}
+          - type: 'null'
+          title: Data
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error
+      type: object
+      required:
+      - success
+      title: FunctionExecutionResult
+    InferenceProvider:
+      type: string
+      enum:
+      - openai
+      - anthropic
+      title: InferenceProvider
     OpenAIFunction:
       properties:
         name:
@@ -193,6 +218,38 @@ components:
       - description
       - parameters
       title: OpenAIFunction
+    OpenAIFunctionDefinition:
+      properties:
+        type:
+          type: string
+          enum:
+          - function
+          const: function
+          title: Type
+          default: function
+        function:
+          $ref: '#/components/schemas/OpenAIFunction'
+      type: object
+      required:
+      - function
+      title: OpenAIFunctionDefinition
+    AnthropicFunctionDefinition:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        input_schema:
+          type: object
+          title: Input Schema
+      type: object
+      required:
+      - name
+      - description
+      - input_schema
+      title: AnthropicFunctionDefinition
     HTTPValidationError:
       properties:
         detail:
@@ -202,25 +259,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    FunctionExecutionResult:
-      properties:
-        success:
-          type: boolean
-          title: Success
-        data:
-          anyOf:
-          - {}
-          - type: 'null'
-          title: Data
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Error
-      type: object
-      required:
-      - success
-      title: FunctionExecutionResult
     ValidationError:
       properties:
         loc:
@@ -242,12 +280,6 @@ components:
       - msg
       - type
       title: ValidationError
-    InferenceProvider:
-      type: string
-      enum:
-      - openai
-      - anthropic
-      title: InferenceProvider
     FunctionExecute:
       properties:
         function_input:
@@ -263,23 +295,6 @@ components:
       required:
       - linked_account_owner_id
       title: FunctionExecute
-    AnthropicFunctionDefinition:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        input_schema:
-          type: object
-          title: Input Schema
-      type: object
-      required:
-      - name
-      - description
-      - input_schema
-      title: AnthropicFunctionDefinition
     FunctionBasic:
       properties:
         name:
@@ -293,21 +308,6 @@ components:
       - name
       - description
       title: FunctionBasic
-    OpenAIFunctionDefinition:
-      properties:
-        type:
-          type: string
-          enum:
-          - function
-          const: function
-          title: Type
-          default: function
-        function:
-          $ref: '#/components/schemas/OpenAIFunction'
-      type: object
-      required:
-      - function
-      title: OpenAIFunctionDefinition
   securitySchemes:
     APIKeyHeader:
       type: apiKey

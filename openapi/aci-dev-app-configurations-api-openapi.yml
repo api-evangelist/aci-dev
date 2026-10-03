@@ -199,25 +199,37 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
+    AppConfigurationCreate:
       properties:
-        detail:
+        app_name:
+          type: string
+          title: App Name
+        security_scheme:
+          $ref: '#/components/schemas/SecurityScheme'
+        security_scheme_overrides:
+          type: object
+          title: Security Scheme Overrides
+        all_functions_enabled:
+          type: boolean
+          title: All Functions Enabled
+          default: true
+        enabled_functions:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            type: string
           type: array
-          title: Detail
+          title: Enabled Functions
       type: object
-      title: HTTPValidationError
-    SecurityScheme:
-      type: string
-      enum:
-      - no_auth
-      - api_key
-      - http_basic
-      - http_bearer
-      - oauth2
-      title: SecurityScheme
-      description: security scheme type for an app (or function if support override)
+      required:
+      - app_name
+      - security_scheme
+      title: AppConfigurationCreate
+      description: 'Create a new app configuration
+
+        “all_functions_enabled=True” → ignore enabled_functions.
+
+        “all_functions_enabled=False” AND non-empty enabled_functions → selectively enable that list.
+
+        “all_functions_enabled=False” AND empty enabled_functions → all functions disabled.'
     AppConfigurationPublic:
       properties:
         id:
@@ -268,6 +280,15 @@ components:
       - created_at
       - updated_at
       title: AppConfigurationPublic
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -319,37 +340,16 @@ components:
           title: Enabled Functions
       type: object
       title: AppConfigurationUpdate
-    AppConfigurationCreate:
-      properties:
-        app_name:
-          type: string
-          title: App Name
-        security_scheme:
-          $ref: '#/components/schemas/SecurityScheme'
-        security_scheme_overrides:
-          type: object
-          title: Security Scheme Overrides
-        all_functions_enabled:
-          type: boolean
-          title: All Functions Enabled
-          default: true
-        enabled_functions:
-          items:
-            type: string
-          type: array
-          title: Enabled Functions
-      type: object
-      required:
-      - app_name
-      - security_scheme
-      title: AppConfigurationCreate
-      description: 'Create a new app configuration
-
-        “all_functions_enabled=True” → ignore enabled_functions.
-
-        “all_functions_enabled=False” AND non-empty enabled_functions → selectively enable that list.
-
-        “all_functions_enabled=False” AND empty enabled_functions → all functions disabled.'
+    SecurityScheme:
+      type: string
+      enum:
+      - no_auth
+      - api_key
+      - http_basic
+      - http_bearer
+      - oauth2
+      title: SecurityScheme
+      description: security scheme type for an app (or function if support override)
   securitySchemes:
     APIKeyHeader:
       type: apiKey
