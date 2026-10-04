@@ -126,15 +126,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -156,7 +147,7 @@ components:
       - msg
       - type
       title: ValidationError
-    FunctionBasic:
+    AppBasic:
       properties:
         name:
           type: string
@@ -168,7 +159,7 @@ components:
       required:
       - name
       - description
-      title: FunctionBasic
+      title: AppBasic
     AppBasicWithFunctions:
       properties:
         name:
@@ -188,7 +179,16 @@ components:
       - description
       - functions
       title: AppBasicWithFunctions
-    AppBasic:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    FunctionBasic:
       properties:
         name:
           type: string
@@ -200,7 +200,7 @@ components:
       required:
       - name
       - description
-      title: AppBasic
+      title: FunctionBasic
   securitySchemes:
     APIKeyHeader:
       type: apiKey

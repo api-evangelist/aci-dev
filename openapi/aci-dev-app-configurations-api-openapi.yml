@@ -199,6 +199,57 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    AppConfigurationUpdate:
+      properties:
+        security_scheme:
+          anyOf:
+          - $ref: '#/components/schemas/SecurityScheme'
+          - type: 'null'
+        security_scheme_overrides:
+          anyOf:
+          - type: object
+          - type: 'null'
+          title: Security Scheme Overrides
+        enabled:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Enabled
+        all_functions_enabled:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: All Functions Enabled
+        enabled_functions:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Enabled Functions
+      type: object
+      title: AppConfigurationUpdate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     AppConfigurationCreate:
       properties:
         app_name:
@@ -230,6 +281,16 @@ components:
         “all_functions_enabled=False” AND non-empty enabled_functions → selectively enable that list.
 
         “all_functions_enabled=False” AND empty enabled_functions → all functions disabled.'
+    SecurityScheme:
+      type: string
+      enum:
+      - no_auth
+      - api_key
+      - http_basic
+      - http_bearer
+      - oauth2
+      title: SecurityScheme
+      description: security scheme type for an app (or function if support override)
     AppConfigurationPublic:
       properties:
         id:
@@ -289,67 +350,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    AppConfigurationUpdate:
-      properties:
-        security_scheme:
-          anyOf:
-          - $ref: '#/components/schemas/SecurityScheme'
-          - type: 'null'
-        security_scheme_overrides:
-          anyOf:
-          - type: object
-          - type: 'null'
-          title: Security Scheme Overrides
-        enabled:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Enabled
-        all_functions_enabled:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: All Functions Enabled
-        enabled_functions:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Enabled Functions
-      type: object
-      title: AppConfigurationUpdate
-    SecurityScheme:
-      type: string
-      enum:
-      - no_auth
-      - api_key
-      - http_basic
-      - http_bearer
-      - oauth2
-      title: SecurityScheme
-      description: security scheme type for an app (or function if support override)
   securitySchemes:
     APIKeyHeader:
       type: apiKey

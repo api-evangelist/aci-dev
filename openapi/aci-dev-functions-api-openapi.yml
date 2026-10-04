@@ -171,25 +171,42 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    FunctionExecutionResult:
+    ValidationError:
       properties:
-        success:
-          type: boolean
-          title: Success
-        data:
-          anyOf:
-          - {}
-          - type: 'null'
-          title: Data
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Error
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
       required:
-      - success
-      title: FunctionExecutionResult
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    OpenAIFunctionDefinition:
+      properties:
+        type:
+          type: string
+          enum:
+          - function
+          const: function
+          title: Type
+          default: function
+        function:
+          $ref: '#/components/schemas/OpenAIFunction'
+      type: object
+      required:
+      - function
+      title: OpenAIFunctionDefinition
     InferenceProvider:
       type: string
       enum:
@@ -218,21 +235,49 @@ components:
       - description
       - parameters
       title: OpenAIFunction
-    OpenAIFunctionDefinition:
+    FunctionExecutionResult:
       properties:
-        type:
-          type: string
-          enum:
-          - function
-          const: function
-          title: Type
-          default: function
-        function:
-          $ref: '#/components/schemas/OpenAIFunction'
+        success:
+          type: boolean
+          title: Success
+        data:
+          anyOf:
+          - {}
+          - type: 'null'
+          title: Data
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error
       type: object
       required:
-      - function
-      title: OpenAIFunctionDefinition
+      - success
+      title: FunctionExecutionResult
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    FunctionExecute:
+      properties:
+        function_input:
+          type: object
+          title: Function Input
+          description: The input parameters for the function.
+        linked_account_owner_id:
+          type: string
+          maxLength: 255
+          title: Linked Account Owner Id
+          description: The owner id of the linked account. This is the id of the linked account owner in the linked account provider.
+      type: object
+      required:
+      - linked_account_owner_id
+      title: FunctionExecute
     AnthropicFunctionDefinition:
       properties:
         name:
@@ -250,51 +295,6 @@ components:
       - description
       - input_schema
       title: AnthropicFunctionDefinition
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    FunctionExecute:
-      properties:
-        function_input:
-          type: object
-          title: Function Input
-          description: The input parameters for the function.
-        linked_account_owner_id:
-          type: string
-          maxLength: 255
-          title: Linked Account Owner Id
-          description: The owner id of the linked account. This is the id of the linked account owner in the linked account provider.
-      type: object
-      required:
-      - linked_account_owner_id
-      title: FunctionExecute
     FunctionBasic:
       properties:
         name:
