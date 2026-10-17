@@ -147,19 +147,6 @@ components:
       - msg
       - type
       title: ValidationError
-    AppBasic:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-      type: object
-      required:
-      - name
-      - description
-      title: AppBasic
     AppBasicWithFunctions:
       properties:
         name:
@@ -179,15 +166,19 @@ components:
       - description
       - functions
       title: AppBasicWithFunctions
-    HTTPValidationError:
+    AppBasic:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
       type: object
-      title: HTTPValidationError
+      required:
+      - name
+      - description
+      title: AppBasic
     FunctionBasic:
       properties:
         name:
@@ -201,6 +192,15 @@ components:
       - name
       - description
       title: FunctionBasic
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
   securitySchemes:
     APIKeyHeader:
       type: apiKey
