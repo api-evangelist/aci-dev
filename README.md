@@ -1,4 +1,4 @@
-# ACI.dev (aci-dev)
+# ACI.dev
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,167 +66,145 @@
 
 ACI.dev (Aipolabs Agent-Computer Interface) is an open-source tool-calling platform that hooks AI agents into 600+ pre-built tools through direct function calling or a unified Model Context Protocol server. Maintained by Aipotheosis Labs (Aipolabs) under Apache 2.0, ACI provides multi-tenant OAuth2 and API-key authentication, per-project App Configurations, natural-language permission guardrails, OpenAI- and Anthropic-compatible function definitions, Python and TypeScript SDKs, and the unified aci-mcp server with ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools. The sister project Gate22 adds an open-source MCP gateway and control plane for governing which tools agents can use, what they can do, and how it is audited.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/aci-dev/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/aci-dev/refs/heads/main/apis.yml)
+**Areas:** Agent Infrastructure · Agents · Artificial Intelligence · Function Calling · MCP · Authentication · Open Source · Tool Calling · VibeOps
 
-## Scope
+## ACI.dev on APIs.io
 
-- **Position:** Producing
-- **Access:** 3rd-Party
+Everything profiled for ACI.dev is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aci-dev/](https://apis.io/providers/aci-dev/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Agent Infrastructure
-- Agents
-- AI
-- Artificial Intelligence
-- Function Calling
-- MCP
-- Model Context Protocol
-- OAuth
-- Open Source
-- Tool Calling
-- VibeOps
+- [ACI.dev App Configurations API](https://apis.io/apis/aci-dev/aci-dev-app-configurations-api/) — The app-configurations API from ACI.dev — 2 operation(s) for app-configurations.
+- [ACI.dev Apps API](https://apis.io/apis/aci-dev/aci-dev-apps-api/) — The apps API from ACI.dev — 2 operation(s) for apps.
+- [ACI.dev Functions API](https://apis.io/apis/aci-dev/aci-dev-functions-api/) — The functions API from ACI.dev — 3 operation(s) for functions.
+- [ACI.dev Linked Accounts API](https://apis.io/apis/aci-dev/aci-dev-linked-accounts-api/) — The linked-accounts API from ACI.dev — 4 operation(s) for linked-accounts.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### ACI.dev Apps API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Search and inspect the 600+ pre-built Apps in the ACI.dev catalog. Apps are external service integrations (Slack, Gmail, Zendesk, GitHub, etc.) that expose Functions for AI agents to call. Search supports natural-language intent for vector similarity ranking and filtering by category or configured-only.
+- [Aci Dev Agentic Access](https://apis.io/agentic-access/aci-dev/aci-dev-agentic-access/)
 
-- **Human URL:** [https://aci.dev/docs/core-concepts/app.md](https://aci.dev/docs/core-concepts/app.md)
+#### JSON Schema (9)
 
-#### Tags
+The data models the API reads and writes.
 
-- Apps
-- Catalog
-- Tool Calling
+- [AnthropicFunctionDefinition](https://apis.io/schemas/aci-dev/aci-dev-anthropic-function-definition/)
+- [AppBasic](https://apis.io/schemas/aci-dev/aci-dev-app/)
+- [AppConfigurationPublic](https://apis.io/schemas/aci-dev/aci-dev-app-configuration/)
+- [AppBasicWithFunctions](https://apis.io/schemas/aci-dev/aci-dev-app-with-functions/)
+- [FunctionBasic](https://apis.io/schemas/aci-dev/aci-dev-function/)
+- [FunctionExecute](https://apis.io/schemas/aci-dev/aci-dev-function-execute/)
+- [FunctionExecutionResult](https://apis.io/schemas/aci-dev/aci-dev-function-execution-result/)
+- [LinkedAccountPublic](https://apis.io/schemas/aci-dev/aci-dev-linked-account/)
+- [OpenAIFunctionDefinition](https://apis.io/schemas/aci-dev/aci-dev-openai-function-definition/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://aci.dev/docs/core-concepts/app.md)
-- [Documentation](https://aci.dev/docs/api-reference/apps/search-apps.md)
-- [Documentation](https://aci.dev/docs/api-reference/apps/get-app-details.md)
-- [OpenAPI](openapi/aci-dev-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/aci-dev.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aci-dev.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/aci-dev-app-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/aci-dev-app-with-functions-schema.json) — [JSON Schema](https://json-schema.org/specification)
+Linked-data contexts for the provider's vocabulary.
 
-### ACI.dev Functions API
+- [Aci Dev Context](https://apis.io/jsonld/aci-dev/aci-dev-context/)
 
-Search, inspect, and execute the callable Functions (tools) exposed by configured Apps. Function definitions are returned in OpenAI- and Anthropic-compatible JSON Schema, and the same surface powers the unified MCP server's ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools.
+#### Vocabulary (1)
 
-- **Human URL:** [https://aci.dev/docs/core-concepts/function.md](https://aci.dev/docs/core-concepts/function.md)
+The provider's domain terms, defined.
 
-#### Tags
+- [ACI.dev Vocabulary](https://apis.io/vocabularies/aci-dev/aci-dev-vocabulary/)
 
-- Functions
-- Tool Calling
-- MCP
+#### Examples (3)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://aci.dev/docs/core-concepts/function.md)
-- [Documentation](https://aci.dev/docs/api-reference/functions/search-functions.md)
-- [Documentation](https://aci.dev/docs/api-reference/functions/get-function-definition.md)
-- [Documentation](https://aci.dev/docs/api-reference/functions/execute.md)
-- [OpenAPI](openapi/aci-dev-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/aci-dev.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aci-dev.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/aci-dev-function-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/aci-dev-function-execute-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/aci-dev-function-execution-result-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/aci-dev-openai-function-definition-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/aci-dev-anthropic-function-definition-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/aci-dev-search-functions-example.json)
-- [Example](examples/aci-dev-execute-function-example.json)
+- [Aci Dev Execute Function Example](https://apis.io/examples/aci-dev/aci-dev-execute-function-example/)
+- [Aci Dev Link Oauth2 Account Example](https://apis.io/examples/aci-dev/aci-dev-link-oauth2-account-example/)
+- [Aci Dev Search Functions Example](https://apis.io/examples/aci-dev/aci-dev-search-functions-example/)
 
-### ACI.dev App Configurations API
+#### Collections (5)
 
-Create and manage per-project App Configurations. An App Configuration declares which App is enabled, which security scheme it should use (OAuth2, API key, or no-auth), which functions are permitted, and any security-scheme overrides. App Configurations are the governance boundary for the ACI.dev tool catalog.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://aci.dev/docs/core-concepts/app-configuration.md](https://aci.dev/docs/core-concepts/app-configuration.md)
+- [ACI.dev API](https://apis.io/collections/aci-dev/open-aci-dev/)
+- [ACI.dev app-configurations API](https://apis.io/collections/aci-dev/open-aci-dev-app-configurations-api/)
+- [ACI.dev app-configurations apps API](https://apis.io/collections/aci-dev/open-aci-dev-apps-api/)
+- [ACI.dev app-configurations functions API](https://apis.io/collections/aci-dev/open-aci-dev-functions-api/)
+- [ACI.dev app-configurations linked-accounts API](https://apis.io/collections/aci-dev/open-aci-dev-linked-accounts-api/)
 
-#### Tags
+#### Governance rules (2)
 
-- App Configurations
-- Governance
-- Authentication
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [ACI.dev — jsonschema rules](https://apis.io/rules/aci-dev/aci-dev-jsonschema-spectral-rules/)
+- [ACI.dev API Rules](https://apis.io/rules/aci-dev/aci-dev-rules/)
 
-- [Documentation](https://aci.dev/docs/core-concepts/app-configuration.md)
-- [OpenAPI](openapi/aci-dev-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/aci-dev.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aci-dev.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/aci-dev-app-configuration-schema.json) — [JSON Schema](https://json-schema.org/specification)
+#### Security (2)
 
-### ACI.dev Linked Accounts API
+Authentication, trust centre, and vulnerability disclosure.
 
-Manage end-user Linked Accounts for configured Apps. Initiate an OAuth2 link flow, handle the OAuth2 callback, list and retrieve linked accounts by owner ID, and revoke a Linked Account. White-label OAuth2 is supported so production agents can present the customer's own brand during the consent screen.
+- [Aci Dev Authentication](https://apis.io/security/aci-dev/aci-dev-authentication/)
+- [Aci Dev Domain Security](https://apis.io/security/aci-dev/aci-dev-domain-security/)
 
-- **Human URL:** [https://aci.dev/docs/core-concepts/linked-account.md](https://aci.dev/docs/core-concepts/linked-account.md)
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- Linked Accounts
-- OAuth
-- Authentication
-
-#### Properties
-
-- [Documentation](https://aci.dev/docs/core-concepts/linked-account.md)
-- [Documentation](https://aci.dev/docs/api-reference/linked-accounts/link-oauth2-account.md)
-- [Documentation](https://aci.dev/docs/api-reference/linked-accounts/linked-accounts-oauth2-callback.md)
-- [Documentation](https://aci.dev/docs/advanced/oauth2-whitelabel.md)
-- [OpenAPI](openapi/aci-dev-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/aci-dev.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aci-dev.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/aci-dev-linked-account-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/aci-dev-link-oauth2-account-example.json)
-
-## Common Properties
-
-- [Portal](https://aci.dev)
+- [Website](https://www.aci.dev/)
 - [Documentation](https://aci.dev/docs)
-- [Getting Started](https://aci.dev/docs/introduction/quickstart.md)
-- [Documentation](https://aci.dev/docs/api-reference/overview.md)
-- [Documentation](https://aci.dev/docs/api-reference/openapi.json)
-- [Documentation](https://aci.dev/docs/sdk/intro.md)
-- [Documentation](https://aci.dev/docs/sdk/custom-functions.md)
-- [Documentation](https://aci.dev/docs/mcp-servers/introduction)
-- [Documentation](https://aci.dev/docs/agent-playground/introduction.md)
-- [Documentation](https://aci.dev/docs/advanced/oauth2-whitelabel.md)
-- [Documentation](https://aci.dev/docs/llms.txt)
-- [GitHub Organization](https://github.com/aipotheosis-labs)
-- [Source Code](https://github.com/aipotheosis-labs/aci)
-- [Source Code](https://github.com/aipotheosis-labs/aci-mcp)
-- [Source Code](https://github.com/aipotheosis-labs/aci-mcp-node)
-- [SDK](https://github.com/aipotheosis-labs/aci-python-sdk)
-- [SDK](https://github.com/aipotheosis-labs/aci-typescript-sdk)
-- [Source Code](https://github.com/aipotheosis-labs/aci-agents)
-- [Source Code](https://github.com/aipotheosis-labs/aci-developer-docs)
-- [Source Code](https://github.com/aipotheosis-labs/gate22)
-- [Source Code](https://github.com/aipotheosis-labs/gate22-docs)
-- [Documentation](https://platform.aci.dev)
-- [Documentation](https://discord.gg/nnqFSzq2ne)
-- [LinkedIn](https://www.linkedin.com/company/aipotheosis-labs-aipolabs)
-- [Twitter](https://twitter.com/AipoLabs)
-- [Documentation](https://www.youtube.com/@AipotheosisLabs)
-- [License](https://www.apache.org/licenses/LICENSE-2.0)
-- [Features](undefined)
-- [Integrations](undefined)
-- [Vocabulary](vocabulary/aci-dev-vocabulary.yml)
-- [Spectral Rules](rules/aci-dev-rules.yml)
-- [JSON-LD](json-ld/aci-dev-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Getting started](https://aci.dev/docs/introduction/quickstart.md)
+- [GitHub](https://github.com/aipotheosis-labs)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 35.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 65.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 50.0 |
+| Access clarity | 0.0 |
+
+**Agent readiness 24.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aci-dev/](https://apis.io/providers/aci-dev/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ACI.dev: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aci-dev/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
