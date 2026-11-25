@@ -66,7 +66,7 @@
 
 ACI.dev (Aipolabs Agent-Computer Interface) is an open-source tool-calling platform that hooks AI agents into 600+ pre-built tools through direct function calling or a unified Model Context Protocol server. Maintained by Aipotheosis Labs (Aipolabs) under Apache 2.0, ACI provides multi-tenant OAuth2 and API-key authentication, per-project App Configurations, natural-language permission guardrails, OpenAI- and Anthropic-compatible function definitions, Python and TypeScript SDKs, and the unified aci-mcp server with ACI_SEARCH_FUNCTIONS and ACI_EXECUTE_FUNCTION meta-tools. The sister project Gate22 adds an open-source MCP gateway and control plane for governing which tools agents can use, what they can do, and how it is audited.
 
-**Areas:** Agent Infrastructure · Agents · Artificial Intelligence · Function Calling · MCP · Authentication · Open Source · Tool Calling · VibeOps
+**Areas:** Agent Infrastructure · Agents · Artificial Intelligence · Function Calling · MCP · OAuth · Open Source · Tool Calling · Vibe Ops · Authentication
 
 ## ACI.dev on APIs.io
 
@@ -87,7 +87,7 @@ Each property below is a page on APIs.io carrying the machine-readable artifact 
 
 Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Aci Dev Agentic Access](https://apis.io/agentic-access/aci-dev/aci-dev-agentic-access/)
+- [ACI.dev Agentic Access](https://apis.io/agentic-access/aci-dev/aci-dev-agentic-access/)
 
 #### JSON Schema (9)
 
@@ -119,9 +119,9 @@ The provider's domain terms, defined.
 
 Example requests and responses.
 
-- [Aci Dev Execute Function Example](https://apis.io/examples/aci-dev/aci-dev-execute-function-example/)
-- [Aci Dev Link Oauth2 Account Example](https://apis.io/examples/aci-dev/aci-dev-link-oauth2-account-example/)
-- [Aci Dev Search Functions Example](https://apis.io/examples/aci-dev/aci-dev-search-functions-example/)
+- [ACI.dev Execute Function Example](https://apis.io/examples/aci-dev/aci-dev-execute-function-example/)
+- [ACI.dev Link Oauth2 Account Example](https://apis.io/examples/aci-dev/aci-dev-link-oauth2-account-example/)
+- [ACI.dev Search Functions Example](https://apis.io/examples/aci-dev/aci-dev-search-functions-example/)
 
 #### Collections (5)
 
@@ -144,8 +144,8 @@ Spectral rulesets for the provider's contracts.
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Aci Dev Authentication](https://apis.io/security/aci-dev/aci-dev-authentication/)
-- [Aci Dev Domain Security](https://apis.io/security/aci-dev/aci-dev-domain-security/)
+- [ACI.dev Authentication](https://apis.io/security/aci-dev/aci-dev-authentication/)
+- [ACI.dev Domain Security](https://apis.io/security/aci-dev/aci-dev-domain-security/)
 
 ## Where to find this API
 
@@ -158,18 +158,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 35.0** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 34.4** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 57.1 |
 | Contract quality | 65.1 |
 | Contract governance | 27.3 |
-| Operational transparency | 2.6 |
+| Operational transparency | 4.8 |
 | Developer ergonomics | 50.0 |
 | Access clarity | 0.0 |
 
-**Agent readiness 24.3** — agent-aware
+**Agent readiness 26.7** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -192,8 +192,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | yes |
 
-**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+**Regulatory alignment 10.0** — Horizontal (data, software, accessibility, platform)
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aci-dev/](https://apis.io/providers/aci-dev/).
 
